@@ -22,6 +22,9 @@ public class BowlingGame {
   }
 
   public void pinsDown(int numberOfDownPins) {
+    if (numberOfDownPins == 10) {
+      attempts++;
+    }
     int currentTurn = attempts / 2;
     score.pinsDown(currentTurn, numberOfDownPins);
     attempts++;

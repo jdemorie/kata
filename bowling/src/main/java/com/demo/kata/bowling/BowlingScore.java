@@ -13,10 +13,20 @@ public final class BowlingScore {
   public void pinsDown(int turnNumber, int numberOfDownPins) {
     if (turnNumber > 0) {
       boolean spare = turns[turnNumber - 1].isSpare();
-      turns[turnNumber].pinsDown(numberOfDownPins, spare);
-    } else {
-      turns[turnNumber].pinsDown(numberOfDownPins, false);
+      if (spare) {
+        turns[turnNumber].pinsDownWithSpare(numberOfDownPins);
+        return;
+      }
+      if (turnNumber > 1) {
+        boolean strike = turns[turnNumber - 2].isStrike();
+        if (strike) {
+          int score = turns[turnNumber - 1].getScore();
+          turns[turnNumber].pinsDownWithStrike(numberOfDownPins, score);
+          return;
+        }
+      }
     }
+    turns[turnNumber].pinsDown(numberOfDownPins);
   }
 
   public int getScore() {

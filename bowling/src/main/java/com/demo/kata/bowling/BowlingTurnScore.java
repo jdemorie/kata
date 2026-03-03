@@ -13,14 +13,31 @@ public final class BowlingTurnScore {
     this.second = second;
   }
 
-  public void pinsDown(int numberOfDownPins, boolean spare) {
+  public void pinsDown(int numberOfDownPins) {
     if (attempts == 0) {
-      if (spare) {
-        bonus = numberOfDownPins;
-      }
       first = numberOfDownPins;
     } else {
       second = numberOfDownPins;
+    }
+    attempts++;
+  }
+
+  public void pinsDownWithSpare(int numberOfDownPins) {
+    if (attempts == 0) {
+      bonus = numberOfDownPins;
+      first = numberOfDownPins;
+    } else {
+      second = numberOfDownPins;
+    }
+    attempts++;
+  }
+
+  public void pinsDownWithStrike(int numberOfDownPins, int bonusFromPreviousTurn) {
+    if (attempts == 0) {
+      first = numberOfDownPins;
+    } else {
+      second = numberOfDownPins;
+      bonus = bonusFromPreviousTurn + numberOfDownPins + first;
     }
     attempts++;
   }
@@ -29,11 +46,18 @@ public final class BowlingTurnScore {
     return second != 0 && first + second == 10;
   }
 
+  public boolean isStrike() {
+    return second == 0 && first == 10;
+  }
+
   public int getScore() {
     return first + second + bonus;
   }
 
   public String getOutputLine() {
+    if (first == 10) {
+      return "X";
+    }
     if (first + second == 10) {
       return first + "/";
     }
