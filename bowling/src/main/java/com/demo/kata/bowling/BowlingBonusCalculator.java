@@ -33,12 +33,9 @@ public class BowlingBonusCalculator {
         if (strikes == 2) {
           bonus += turn.getFirstDownPins() + 10;
           strikes--;
-          bonus += turn.getFirstDownPins() + turn.getSecondDownPins();
-          strikes--;
-        } else {
-          bonus += turn.getFirstDownPins() + turn.getSecondDownPins();
-          strikes--;
         }
+        bonus += turn.getFirstDownPins() + turn.getSecondDownPins();
+        strikes--;
       }
     }
   }
