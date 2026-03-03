@@ -8,18 +8,18 @@ public class BowlingTest {
     BowlingScenario bowlingScenario = new BowlingScenario();
     bowlingScenario.givenABowlingArea()
         .whenIStartAGame()
-        .thenTheTurnScoresShouldBe(new BowlingScore(new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0)))
+        .thenTheTurnShouldBe(new BowlingLine(new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0)))
         .thenTheOutputLineShouldBe("00 00 00 00 00 00 00 00 00 00")
-        .thenTheTotalScoreShouldBe(0);
+        .thenTheScoreShouldBe(0);
   }
 
   @Test
@@ -28,18 +28,18 @@ public class BowlingTest {
     bowlingScenario.givenABowlingArea()
         .whenIStartAGame()
         .whenIDownPins(4)
-        .thenTheTurnScoresShouldBe(new BowlingScore(new BowlingTurnScore(4, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0)))
+        .thenTheTurnShouldBe(new BowlingLine(new BowlingTurn(4, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0)))
         .thenTheOutputLineShouldBe("40 00 00 00 00 00 00 00 00 00")
-        .thenTheTotalScoreShouldBe(4);
+        .thenTheScoreShouldBe(4);
   }
 
   @Test
@@ -49,18 +49,18 @@ public class BowlingTest {
         .whenIStartAGame()
         .whenIDownPins(4)
         .whenIDownPins(5)
-        .thenTheTurnScoresShouldBe(new BowlingScore(new BowlingTurnScore(4, 5),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0)))
+        .thenTheTurnShouldBe(new BowlingLine(new BowlingTurn(4, 5),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0)))
         .thenTheOutputLineShouldBe("45 00 00 00 00 00 00 00 00 00")
-        .thenTheTotalScoreShouldBe(9);
+        .thenTheScoreShouldBe(9);
   }
 
   @Test
@@ -71,18 +71,18 @@ public class BowlingTest {
         .whenIDownPins(4)
         .whenIDownPins(5)
         .whenIDownPins(3)
-        .thenTheTurnScoresShouldBe(new BowlingScore(new BowlingTurnScore(4, 5),
-                                                    new BowlingTurnScore(3, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0)))
+        .thenTheTurnShouldBe(new BowlingLine(new BowlingTurn(4, 5),
+                                             new BowlingTurn(3, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0)))
         .thenTheOutputLineShouldBe("45 30 00 00 00 00 00 00 00 00")
-        .thenTheTotalScoreShouldBe(12);
+        .thenTheScoreShouldBe(12);
   }
 
   @Test
@@ -92,18 +92,18 @@ public class BowlingTest {
         .whenIStartAGame()
         .whenIDownPins(4)
         .whenIDownPins(6)
-        .thenTheTurnScoresShouldBe(new BowlingScore(new BowlingTurnScore(4, 6),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0)))
+        .thenTheTurnShouldBe(new BowlingLine(new BowlingTurn(4, 6),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0)))
         .thenTheOutputLineShouldBe("4/ 00 00 00 00 00 00 00 00 00")
-        .thenTheTotalScoreShouldBe(10);
+        .thenTheScoreShouldBe(10);
   }
 
   @Test
@@ -114,18 +114,18 @@ public class BowlingTest {
         .whenIDownPins(4)
         .whenIDownPins(6)
         .whenIDownPins(5)
-        .thenTheTurnScoresShouldBe(new BowlingScore(new BowlingTurnScore(4, 6),
-                                                    new BowlingTurnScore(5, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0)))
+        .thenTheTurnShouldBe(new BowlingLine(new BowlingTurn(4, 6),
+                                             new BowlingTurn(5, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0)))
         .thenTheOutputLineShouldBe("4/ 50 00 00 00 00 00 00 00 00")
-        .thenTheTotalScoreShouldBe(20);
+        .thenTheScoreShouldBe(20);
   }
 
   @Test
@@ -137,18 +137,18 @@ public class BowlingTest {
         .whenIDownPins(6)
         .whenIDownPins(5)
         .whenIDownPins(3)
-        .thenTheTurnScoresShouldBe(new BowlingScore(new BowlingTurnScore(4, 6),
-                                                    new BowlingTurnScore(5, 3),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0)))
+        .thenTheTurnShouldBe(new BowlingLine(new BowlingTurn(4, 6),
+                                             new BowlingTurn(5, 3),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0)))
         .thenTheOutputLineShouldBe("4/ 53 00 00 00 00 00 00 00 00")
-        .thenTheTotalScoreShouldBe(23);
+        .thenTheScoreShouldBe(23);
   }
 
   @Test
@@ -160,18 +160,18 @@ public class BowlingTest {
         .whenIDownPins(6)
         .whenIDownPins(5)
         .whenIDownPins(5)
-        .thenTheTurnScoresShouldBe(new BowlingScore(new BowlingTurnScore(4, 6),
-                                                    new BowlingTurnScore(5, 5),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0)))
+        .thenTheTurnShouldBe(new BowlingLine(new BowlingTurn(4, 6),
+                                             new BowlingTurn(5, 5),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0)))
         .thenTheOutputLineShouldBe("4/ 5/ 00 00 00 00 00 00 00 00")
-        .thenTheTotalScoreShouldBe(25);
+        .thenTheScoreShouldBe(25);
   }
 
   @Test
@@ -184,18 +184,18 @@ public class BowlingTest {
         .whenIDownPins(5)
         .whenIDownPins(5)
         .whenIDownPins(4)
-        .thenTheTurnScoresShouldBe(new BowlingScore(new BowlingTurnScore(4, 6),
-                                                    new BowlingTurnScore(5, 5),
-                                                    new BowlingTurnScore(4, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0)))
+        .thenTheTurnShouldBe(new BowlingLine(new BowlingTurn(4, 6),
+                                             new BowlingTurn(5, 5),
+                                             new BowlingTurn(4, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0)))
         .thenTheOutputLineShouldBe("4/ 5/ 40 00 00 00 00 00 00 00")
-        .thenTheTotalScoreShouldBe(33);
+        .thenTheScoreShouldBe(33);
   }
 
   @Test
@@ -204,18 +204,18 @@ public class BowlingTest {
     bowlingScenario.givenABowlingArea()
         .whenIStartAGame()
         .whenIDownPins(10)
-        .thenTheTurnScoresShouldBe(new BowlingScore(new BowlingTurnScore(10, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0)))
+        .thenTheTurnShouldBe(new BowlingLine(new BowlingTurn(10, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0)))
         .thenTheOutputLineShouldBe("X 00 00 00 00 00 00 00 00 00")
-        .thenTheTotalScoreShouldBe(10);
+        .thenTheScoreShouldBe(10);
   }
 
   @Test
@@ -225,18 +225,18 @@ public class BowlingTest {
         .whenIStartAGame()
         .whenIDownPins(10)
         .whenIDownPins(4)
-        .thenTheTurnScoresShouldBe(new BowlingScore(new BowlingTurnScore(10, 0),
-                                                    new BowlingTurnScore(4, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0)))
+        .thenTheTurnShouldBe(new BowlingLine(new BowlingTurn(10, 0),
+                                             new BowlingTurn(4, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0)))
         .thenTheOutputLineShouldBe("X 40 00 00 00 00 00 00 00 00")
-        .thenTheTotalScoreShouldBe(14);
+        .thenTheScoreShouldBe(14);
   }
 
   @Test
@@ -247,18 +247,18 @@ public class BowlingTest {
         .whenIDownPins(10)
         .whenIDownPins(4)
         .whenIDownPins(2)
-        .thenTheTurnScoresShouldBe(new BowlingScore(new BowlingTurnScore(10, 0),
-                                                    new BowlingTurnScore(4, 2),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0)))
+        .thenTheTurnShouldBe(new BowlingLine(new BowlingTurn(10, 0),
+                                             new BowlingTurn(4, 2),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0)))
         .thenTheOutputLineShouldBe("X 42 00 00 00 00 00 00 00 00")
-        .thenTheTotalScoreShouldBe(10 + 6 + 6);
+        .thenTheScoreShouldBe(22);
   }
 
   @Test
@@ -271,18 +271,18 @@ public class BowlingTest {
         .whenIDownPins(2)
         .whenIDownPins(6)
         .whenIDownPins(2)
-        .thenTheTurnScoresShouldBe(new BowlingScore(new BowlingTurnScore(10, 0),
-                                                    new BowlingTurnScore(4, 2),
-                                                    new BowlingTurnScore(6, 2),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0)))
+        .thenTheTurnShouldBe(new BowlingLine(new BowlingTurn(10, 0),
+                                             new BowlingTurn(4, 2),
+                                             new BowlingTurn(6, 2),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0)))
         .thenTheOutputLineShouldBe("X 42 62 00 00 00 00 00 00 00")
-        .thenTheTotalScoreShouldBe(10 + 6 + 8 + 6);
+        .thenTheScoreShouldBe(30);
   }
 
   @Test
@@ -292,18 +292,18 @@ public class BowlingTest {
         .whenIStartAGame()
         .whenIDownPins(10)
         .whenIDownPins(10)
-        .thenTheTurnScoresShouldBe(new BowlingScore(new BowlingTurnScore(10, 0),
-                                                    new BowlingTurnScore(10, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0)))
+        .thenTheTurnShouldBe(new BowlingLine(new BowlingTurn(10, 0),
+                                             new BowlingTurn(10, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0)))
         .thenTheOutputLineShouldBe("X X 00 00 00 00 00 00 00 00")
-        .thenTheTotalScoreShouldBe(30);
+        .thenTheScoreShouldBe(20);
   }
 
   @Test
@@ -317,17 +317,17 @@ public class BowlingTest {
         .whenIDownPins(2)
         .whenIDownPins(4)
         .whenIDownPins(1)
-        .thenTheTurnScoresShouldBe(new BowlingScore(new BowlingTurnScore(10, 0),
-                                                    new BowlingTurnScore(10, 0),
-                                                    new BowlingTurnScore(3, 2),
-                                                    new BowlingTurnScore(4, 1),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0),
-                                                    new BowlingTurnScore(0, 0)))
+        .thenTheTurnShouldBe(new BowlingLine(new BowlingTurn(10, 0),
+                                             new BowlingTurn(10, 0),
+                                             new BowlingTurn(3, 2),
+                                             new BowlingTurn(4, 1),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0),
+                                             new BowlingTurn(0, 0)))
         .thenTheOutputLineShouldBe("X X 32 41 00 00 00 00 00 00")
-        .thenTheTotalScoreShouldBe(10 + 10 + 3 + 13 + 2 + 5 + 5);
+        .thenTheScoreShouldBe(48);
   }
 }

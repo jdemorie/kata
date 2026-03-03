@@ -7,7 +7,7 @@ public class BowlingScenario {
   private BowlingGame bowlingGame;
 
   public BowlingScenario givenABowlingArea() {
-    bowlingArea = new BowlingArea(new FakeScoreReader(), new FakeScoreWriter());
+    bowlingArea = new BowlingArea(new FakeLineReader(), new FakeLineWriter());
     return this;
   }
 
@@ -16,8 +16,8 @@ public class BowlingScenario {
     return this;
   }
 
-  public BowlingScenario thenTheTurnScoresShouldBe(BowlingScore expectedScore) {
-    BowlingScore currentScore = bowlingGame.getCurrentScore();
+  public BowlingScenario thenTheTurnShouldBe(BowlingLine expectedScore) {
+    BowlingLine currentScore = bowlingGame.getCurrentLine();
     assertEquals(expectedScore, currentScore);
     return this;
   }
@@ -27,13 +27,13 @@ public class BowlingScenario {
     return this;
   }
 
-  public BowlingScenario thenTheTotalScoreShouldBe(int expectedScore) {
-    assertEquals(expectedScore, bowlingGame.getCurrentScore().getScore());
+  public BowlingScenario thenTheScoreShouldBe(int expectedScore) {
+    assertEquals(expectedScore, bowlingArea.computeScore(bowlingGame.getCurrentLine()));
     return this;
   }
 
   public BowlingScenario thenTheOutputLineShouldBe(String expectedLine) {
-    assertEquals(expectedLine, bowlingGame.getCurrentScore().getOutputLine());
+    assertEquals(expectedLine, bowlingArea.getOutputLine(bowlingGame.getCurrentLine()));
     return this;
   }
 }

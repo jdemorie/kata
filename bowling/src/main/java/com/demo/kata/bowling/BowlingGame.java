@@ -1,18 +1,18 @@
 package com.demo.kata.bowling;
 
 public class BowlingGame {
-  private final BowlingScore score;
-  private final BowlingScoreWriter scoreWriter;
+  private final BowlingLine line;
+  private final BowlingLineWriter lineWriter;
   private int attempts;
 
-  public BowlingGame(BowlingScoreReader scoreReader, BowlingScoreWriter scoreWriter) {
-    this.score = scoreReader.read();
-    this.scoreWriter = scoreWriter;
+  public BowlingGame(BowlingLineReader lineReader, BowlingLineWriter lineWriter) {
+    this.line = lineReader.read();
+    this.lineWriter = lineWriter;
     attempts = 0;
   }
 
-  public BowlingScore getCurrentScore() {
-    return score;
+  public BowlingLine getCurrentLine() {
+    return line;
   }
 
   public void pinsDown(int numberOfDownPins) {
@@ -20,8 +20,8 @@ public class BowlingGame {
       attempts++;
     }
     int currentTurn = attempts / 2;
-    score.pinsDown(currentTurn, numberOfDownPins);
+    line.pinsDown(currentTurn, numberOfDownPins);
     attempts++;
-    scoreWriter.write(score);
+    lineWriter.write(line);
   }
 }
