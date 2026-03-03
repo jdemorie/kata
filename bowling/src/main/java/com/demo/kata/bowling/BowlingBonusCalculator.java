@@ -23,10 +23,13 @@ public class BowlingBonusCalculator {
       return;
     }
     if (previousTurn.isStrike()) {
+      BowlingTurn previousAfterPreviousTurn = line.getPreviousTurn(turnIndex, 2);
       if (turn.isStrike()) {
+        if (previousAfterPreviousTurn != null && previousAfterPreviousTurn.isStrike()) {
+          bonus += previousAfterPreviousTurn.getFirstDownPins() + previousTurn.getFirstDownPins();
+        }
         return;
       }
-      BowlingTurn previousAfterPreviousTurn = line.getPreviousTurn(turnIndex, 2);
       if (turn.isComplete()) {
         bonus += turn.getFirstDownPins() + turn.getSecondDownPins();
         if (previousAfterPreviousTurn == null) {
