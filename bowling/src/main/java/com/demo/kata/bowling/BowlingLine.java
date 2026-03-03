@@ -20,6 +20,17 @@ public final class BowlingLine {
     return List.of(turns);
   }
 
+  public BowlingTurn getTurn(int turnIndex) {
+    return turns[turnIndex];
+  }
+
+  public BowlingTurn getPreviousTurn(int turnIndex, int decrement) {
+    if (turnIndex - decrement < 0) {
+      return null;
+    }
+    return turns[turnIndex - decrement];
+  }
+
   @Override
   public boolean equals(Object o) {
     if (o == null || getClass() != o.getClass()) {
@@ -40,5 +51,4 @@ public final class BowlingLine {
            "turns=" + Arrays.toString(turns) +
            '}';
   }
-
 }
