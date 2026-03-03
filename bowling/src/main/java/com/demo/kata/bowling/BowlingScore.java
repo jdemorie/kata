@@ -17,13 +17,11 @@ public final class BowlingScore {
         turns[turnNumber].pinsDownWithSpare(numberOfDownPins);
         return;
       }
-      if (turnNumber > 1) {
-        boolean strike = turns[turnNumber - 2].isStrike();
-        if (strike) {
-          int score = turns[turnNumber - 1].getScore();
-          turns[turnNumber].pinsDownWithStrike(numberOfDownPins, score);
-          return;
-        }
+      boolean strike = turns[turnNumber - 1].isStrike();
+      if (strike) {
+        boolean doubleStrike = turnNumber > 1 && turns[turnNumber - 2].isStrike();
+        turns[turnNumber].pinsDownWithStrike(numberOfDownPins, doubleStrike);
+        return;
       }
     }
     turns[turnNumber].pinsDown(numberOfDownPins);

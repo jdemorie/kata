@@ -7,7 +7,7 @@ public class BowlingScenario {
   private BowlingGame bowlingGame;
 
   public BowlingScenario givenABowlingArea() {
-    bowlingArea = new BowlingArea();
+    bowlingArea = new BowlingArea(new FakeScoreReader(), new FakeScoreWriter());
     return this;
   }
 

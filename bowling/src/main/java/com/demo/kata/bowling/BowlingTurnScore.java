@@ -32,12 +32,18 @@ public final class BowlingTurnScore {
     attempts++;
   }
 
-  public void pinsDownWithStrike(int numberOfDownPins, int bonusFromPreviousTurn) {
+  public void pinsDownWithStrike(int numberOfDownPins, boolean doubleStrike) {
     if (attempts == 0) {
       first = numberOfDownPins;
+      if (numberOfDownPins == 10) {
+        bonus = numberOfDownPins;
+      }
+      if (doubleStrike) {
+        bonus = numberOfDownPins;
+      }
     } else {
       second = numberOfDownPins;
-      bonus = bonusFromPreviousTurn + numberOfDownPins + first;
+      bonus += numberOfDownPins + first;
     }
     attempts++;
   }
@@ -52,6 +58,10 @@ public final class BowlingTurnScore {
 
   public int getScore() {
     return first + second + bonus;
+  }
+
+  public int getAttempts() {
+    return attempts;
   }
 
   public String getOutputLine() {
