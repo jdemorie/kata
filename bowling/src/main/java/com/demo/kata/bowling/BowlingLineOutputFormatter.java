@@ -16,9 +16,18 @@ public class BowlingLineOutputFormatter {
     if (turn.isStrike()) {
       return "X";
     }
+    int firstDownPins = turn.getFirstDownPins();
     if (turn.isSpare()) {
-      return turn.getFirstDownPins() + "/";
+      return firstDownPins + "/";
     }
-    return turn.getFirstDownPins() + "" + turn.getSecondDownPins();
+    int secondDownPins = turn.getSecondDownPins();
+    if (turn.isComplete()) {
+      return getPinsOrMissed(firstDownPins) + getPinsOrMissed(secondDownPins);
+    }
+    return firstDownPins + "" + secondDownPins;
+  }
+
+  private String getPinsOrMissed(int numberOfPins) {
+    return numberOfPins == 0 ? "-" : String.valueOf(numberOfPins);
   }
 }

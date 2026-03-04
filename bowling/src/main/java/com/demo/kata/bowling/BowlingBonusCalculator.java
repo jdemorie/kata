@@ -23,29 +23,33 @@ public class BowlingBonusCalculator {
       return;
     }
     if (previousTurn.isStrike()) {
-      BowlingTurn previousAfterPreviousTurn = line.getPreviousTurn(turnIndex, 2);
-      if (turn.isStrike()) {
-        if (previousAfterPreviousTurn != null && previousAfterPreviousTurn.isStrike()) {
-          bonus += previousAfterPreviousTurn.getFirstDownPins() + previousTurn.getFirstDownPins();
-        }
-        return;
+      computeBonusForPreviousStrike(turnIndex, turn, previousTurn);
+    }
+  }
+
+  private void computeBonusForPreviousStrike(int turnIndex, BowlingTurn turn, BowlingTurn previousTurn) {
+    BowlingTurn previousAfterPreviousTurn = line.getPreviousTurn(turnIndex, 2);
+    if (turn.isStrike()) {
+      if (previousAfterPreviousTurn != null && previousAfterPreviousTurn.isStrike()) {
+        bonus += previousAfterPreviousTurn.getFirstDownPins() + previousTurn.getFirstDownPins();
       }
-      if (turn.isComplete()) {
-        bonus += turn.getFirstDownPins() + turn.getSecondDownPins();
-        if (previousAfterPreviousTurn == null) {
-          return;
-        }
-        if (previousAfterPreviousTurn.isStrike()) {
-          bonus += turn.getFirstDownPins() + previousTurn.getFirstDownPins();
-        }
-        return;
-      }
+      return;
+    }
+    if (turn.isComplete()) {
+      bonus += turn.getFirstDownPins() + turn.getSecondDownPins();
       if (previousAfterPreviousTurn == null) {
         return;
       }
       if (previousAfterPreviousTurn.isStrike()) {
-        bonus += turn.getFirstDownPins();
+        bonus += turn.getFirstDownPins() + previousTurn.getFirstDownPins();
       }
+      return;
+    }
+    if (previousAfterPreviousTurn == null) {
+      return;
+    }
+    if (previousAfterPreviousTurn.isStrike()) {
+      bonus += turn.getFirstDownPins();
     }
   }
 }
