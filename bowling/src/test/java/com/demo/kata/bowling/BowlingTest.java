@@ -431,7 +431,7 @@ public class BowlingTest {
   }
 
   @Test
-  void givenABowlingAreaWhenIDoNineConsecutiveStrikesAndIDownPinsOnNext2TurnsThenTheScoreShouldBe() {
+  void givenABowlingAreaWhenIDoNineConsecutiveStrikesThenTheScoreShouldBe() {
     BowlingScenario bowlingScenario = new BowlingScenario();
     bowlingScenario.givenABowlingArea()
         .whenIStartAGame()
@@ -458,7 +458,7 @@ public class BowlingTest {
   }
 
   @Test
-  void givenABowlingAreaWhenIDoTenConsecutiveStrikesAndIDownPinsOnNext2TurnsThenTheScoreShouldBe() {
+  void givenABowlingAreaWhenIDoTenConsecutiveStrikesThenTheScoreShouldBe() {
     BowlingScenario bowlingScenario = new BowlingScenario();
     bowlingScenario.givenABowlingArea()
         .whenIStartAGame()
@@ -484,5 +484,38 @@ public class BowlingTest {
                                              new BowlingTurn(10, 0)))
         .thenTheOutputLineShouldBe("X X X X X X X X X X")
         .thenTheScoreShouldBe(260);
+  }
+
+  @Test
+  void givenABowlingAreaWhenIDoAllStrikesThenTheScoreShouldBe() {
+    BowlingScenario bowlingScenario = new BowlingScenario();
+    bowlingScenario.givenABowlingArea()
+        .whenIStartAGame()
+        .whenIDownPins(10)
+        .whenIDownPins(10)
+        .whenIDownPins(10)
+        .whenIDownPins(10)
+        .whenIDownPins(10)
+        .whenIDownPins(10)
+        .whenIDownPins(10)
+        .whenIDownPins(10)
+        .whenIDownPins(10)
+        .whenIDownPins(10)
+        .whenIDownPins(10)
+        .whenIDownPins(10)
+        .thenTheTurnShouldBe(new BowlingLine(new BowlingTurn(10, 0),
+                                             new BowlingTurn(10, 0),
+                                             new BowlingTurn(10, 0),
+                                             new BowlingTurn(10, 0),
+                                             new BowlingTurn(10, 0),
+                                             new BowlingTurn(10, 0),
+                                             new BowlingTurn(10, 0),
+                                             new BowlingTurn(10, 0),
+                                             new BowlingTurn(10, 0),
+                                             new BowlingTurn(10, 0),
+                                             new BowlingTurn(10, 0),
+                                             new BowlingTurn(10, 0)))
+        .thenTheOutputLineShouldBe("X X X X X X X X X X X X")
+        .thenTheScoreShouldBe(300);
   }
 }

@@ -1,34 +1,33 @@
 package com.demo.kata.bowling;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public final class BowlingLine {
-  private final BowlingTurn[] turns;
+  private final List<BowlingTurn> turns;
 
   public BowlingLine(BowlingTurn... turns) {
-    this.turns = turns;
+    this.turns = new ArrayList<>();
+    this.turns.addAll(Arrays.asList(turns));
   }
 
   public void pinsDown(int turnNumber, int numberOfDownPins) {
-    BowlingTurn turn = turns[turnNumber];
+    BowlingTurn turn = getOrCreateTurn(turnNumber, numberOfDownPins);
     turn.pinsDown(numberOfDownPins);
   }
 
   public List<BowlingTurn> getTurns() {
-    return List.of(turns);
+    return Collections.unmodifiableList(turns);
   }
 
   public BowlingTurn getTurn(int turnIndex) {
-    return turns[turnIndex];
+    return turns.get(turnIndex);
   }
 
   public BowlingTurn getPreviousTurn(int turnIndex, int decrement) {
     if (turnIndex - decrement < 0) {
       return null;
     }
-    return turns[turnIndex - decrement];
+    return turns.get(turnIndex - decrement);
   }
 
   @Override
@@ -42,13 +41,21 @@ public final class BowlingLine {
 
   @Override
   public int hashCode() {
-    return Arrays.hashCode(turns);
+    return Arrays.hashCode(turns.toArray());
   }
 
   @Override
   public String toString() {
     return "BowlingScore{" +
-           "turns=" + Arrays.toString(turns) +
+           "turns=" + Arrays.toString(turns.toArray()) +
            '}';
+  }
+
+  private BowlingTurn getOrCreateTurn(int turnNumber, int numberOfDownPins) {
+    if (turnNumber >= turns.size()) {
+      BowlingTurn turn = new BowlingTurn(numberOfDownPins, 0);
+      turns.add(turn);
+    }
+    return turns.get(turnNumber);
   }
 }

@@ -15,7 +15,7 @@ public class BowlingBonusCalculator {
   public void computeBonusForTurn(int turnIndex) {
     BowlingTurn turn = line.getTurn(turnIndex);
     BowlingTurn previousTurn = line.getPreviousTurn(turnIndex, 1);
-    if (previousTurn == null) {
+    if (previousTurn == null || turnIndex > 10) {
       return;
     }
     if (previousTurn.isSpare()) {
