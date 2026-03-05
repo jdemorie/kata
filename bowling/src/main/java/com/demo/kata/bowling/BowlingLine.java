@@ -24,7 +24,7 @@ public final class BowlingLine {
   }
 
   public BowlingTurn getPreviousTurn(int turnIndex, int decrement) {
-    if (turnIndex - decrement < 0) {
+    if (turnIndex - decrement < 0 || turnIndex - decrement >= turns.size()) {
       return null;
     }
     return turns.get(turnIndex - decrement);

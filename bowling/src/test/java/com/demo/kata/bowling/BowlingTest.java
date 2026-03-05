@@ -107,6 +107,46 @@ public class BowlingTest {
         .thenTheScoreShouldBe(7);
   }
 
+
+  @Test
+  void givenABowlingAreaWhenIMissedAllSecondPinsThenTheScoreShouldBe9() {
+    BowlingScenario bowlingScenario = new BowlingScenario();
+    bowlingScenario.givenABowlingArea()
+        .whenIStartAGame()
+        .whenIDownPins(9)
+        .whenIDownPins(0)
+        .whenIDownPins(9)
+        .whenIDownPins(0)
+        .whenIDownPins(9)
+        .whenIDownPins(0)
+        .whenIDownPins(9)
+        .whenIDownPins(0)
+        .whenIDownPins(9)
+        .whenIDownPins(0)
+        .whenIDownPins(9)
+        .whenIDownPins(0)
+        .whenIDownPins(9)
+        .whenIDownPins(0)
+        .whenIDownPins(9)
+        .whenIDownPins(0)
+        .whenIDownPins(9)
+        .whenIDownPins(0)
+        .whenIDownPins(9)
+        .whenIDownPins(0)
+        .thenTheTurnShouldBe(new BowlingLine(new BowlingTurn(9, 0),
+                                             new BowlingTurn(9, 0),
+                                             new BowlingTurn(9, 0),
+                                             new BowlingTurn(9, 0),
+                                             new BowlingTurn(9, 0),
+                                             new BowlingTurn(9, 0),
+                                             new BowlingTurn(9, 0),
+                                             new BowlingTurn(9, 0),
+                                             new BowlingTurn(9, 0),
+                                             new BowlingTurn(9, 0)))
+        .thenTheOutputLineShouldBe("9- 9- 9- 9- 9- 9- 9- 9- 9- 9-")
+        .thenTheScoreShouldBe(90);
+  }
+
   @Test
   void givenABowlingAreaWhenIDown4PinsThen6PinsThenTheScoreShouldBeSpare() {
     BowlingScenario bowlingScenario = new BowlingScenario();
@@ -194,6 +234,47 @@ public class BowlingTest {
                                              new BowlingTurn(0, 0)))
         .thenTheOutputLineShouldBe("4/ 5/ 00 00 00 00 00 00 00 00")
         .thenTheScoreShouldBe(25);
+  }
+
+  @Test
+  void givenABowlingAreaWhenIMakeSpareForAllTurnsThenTheScoreShouldBe() {
+    BowlingScenario bowlingScenario = new BowlingScenario();
+    bowlingScenario.givenABowlingArea()
+        .whenIStartAGame()
+        .whenIDownPins(5)
+        .whenIDownPins(5)
+        .whenIDownPins(5)
+        .whenIDownPins(5)
+        .whenIDownPins(5)
+        .whenIDownPins(5)
+        .whenIDownPins(5)
+        .whenIDownPins(5)
+        .whenIDownPins(5)
+        .whenIDownPins(5)
+        .whenIDownPins(5)
+        .whenIDownPins(5)
+        .whenIDownPins(5)
+        .whenIDownPins(5)
+        .whenIDownPins(5)
+        .whenIDownPins(5)
+        .whenIDownPins(5)
+        .whenIDownPins(5)
+        .whenIDownPins(5)
+        .whenIDownPins(5)
+        .whenIDownPins(5)
+        .thenTheTurnShouldBe(new BowlingLine(new BowlingTurn(5, 5),
+                                             new BowlingTurn(5, 5),
+                                             new BowlingTurn(5, 5),
+                                             new BowlingTurn(5, 5),
+                                             new BowlingTurn(5, 5),
+                                             new BowlingTurn(5, 5),
+                                             new BowlingTurn(5, 5),
+                                             new BowlingTurn(5, 5),
+                                             new BowlingTurn(5, 5),
+                                             new BowlingTurn(5, 5),
+                                             new BowlingTurn(5, 0)))
+        .thenTheOutputLineShouldBe("5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/ 50")
+        .thenTheScoreShouldBe(150);
   }
 
   @Test

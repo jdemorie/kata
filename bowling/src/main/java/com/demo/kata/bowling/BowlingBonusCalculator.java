@@ -18,7 +18,7 @@ public class BowlingBonusCalculator {
     if (previousTurn == null || turnIndex > 10) {
       return;
     }
-    if (previousTurn.isSpare()) {
+    if (previousTurn.isSpare() && turnIndex < 10) {
       bonus += turn.getFirstDownPins();
       return;
     }
