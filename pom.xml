@@ -16,6 +16,7 @@
 
   <modules>
     <module>bowling</module>
+    <module>gui</module>
   </modules>
 
   <dependencyManagement>
