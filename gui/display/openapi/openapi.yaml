@@ -1,0 +1,54 @@
+openapi: 3.0.3
+
+info:
+  title: Bowling Internal API
+  version: "1.0"
+
+paths:
+  /server/score:
+    get:
+      summary: "GET server/score"
+      operationId: "getScore"
+      responses:
+        200:
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/ScoreBean"
+        500:
+          $ref: "#/components/responses/ServerError"
+components:
+  responses:
+    NotFound:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorObj"
+    ServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorObj"
+  schemas:
+    ScoreBean:
+      type: object
+      properties:
+        score:
+          type: integer
+          description: "player score"
+      required:
+        - score
+    ErrorObj:
+      type: object
+      properties:
+        message:
+          type: string
+          description: "Error message"
+      required:
+        - code
+        - message
