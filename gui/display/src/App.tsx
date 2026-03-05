@@ -2,6 +2,7 @@ import React from 'react';
 import {createBrowserRouter, Navigate, Outlet, RouterProvider} from "react-router";
 import StartPage from "./routes/start/StartPage";
 import ErrorElement from "./shared/ErrorElement";
+import GamePage from "./routes/game/GamePage";
 
 const router = createBrowserRouter([
     {
@@ -15,6 +16,13 @@ const router = createBrowserRouter([
             {
                 path: 'start',
                 element: <StartPage/>,
+                errorElement: <ErrorElement/>,
+                loader: () => {
+                }
+            },
+            {
+                path: 'game',
+                element: <GamePage/>,
                 errorElement: <ErrorElement/>,
                 loader: () => {
                 }
