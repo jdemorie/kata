@@ -31,7 +31,7 @@ const StartPage: FC = () => {
 
     return (
         <Container>
-            <Gif src="/bowling.webp" alt="Bowling GIF"/>
+            <Gif src="/bowling.jpg" alt="Bowling GIF"/>
             <InputRowContainer>
                 <input
                     ref={inputRef}

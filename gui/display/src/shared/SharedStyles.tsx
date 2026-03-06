@@ -5,6 +5,7 @@ export const CenterContainer = styled.div`
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background-color: whitesmoke;
 `;
 
 export const Container = styled.div`
