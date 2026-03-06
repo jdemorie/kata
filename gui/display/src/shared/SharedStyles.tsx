@@ -8,35 +8,39 @@ export const CenterContainer = styled.div`
 `;
 
 export const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 2rem;
-    gap: 1rem;
-`;
-
-export const ButtonStyle = styled.button`
-    font-size: 16px;
-    cursor: pointer;
-`;
-
-export const BowlingStyle = styled.div`
-    background-image: url('/bowling.webp');
-    background-size: cover;
-    background-position: center;
+    position: relative;
+    height: 100vh;
+    width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
 `;
 
-export const BowlingAreaStyle = styled.div`
-    background-image: url('/bowling-area.jpg');
-    background-size: cover;
-    background-position: center;
+export const InputRowContainer = styled.div`
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1rem;
+`;
+
+export const InputColumnContainer = styled.div`
+    position: absolute;
+    z-index: 2;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 2rem;
     gap: 1rem;
-    height: 100vh;
+`;
+
+export const Gif = styled.img`
+    height: 100%;
+    width: 100%;
+`;
+
+export const ButtonStyle = styled.button`
+    font-size: 16px;
+    cursor: pointer;
+    padding: 10px 20px;
 `;

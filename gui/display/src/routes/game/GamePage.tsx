@@ -1,6 +1,6 @@
 import Grid from "../../shared/Grid";
 import React from "react";
-import {BowlingAreaStyle, ButtonStyle} from "../../shared/SharedStyles";
+import {ButtonStyle, Container, Gif, InputColumnContainer} from "../../shared/SharedStyles";
 import {useName} from "../../store/playerSlice";
 
 const GamePage = () => {
@@ -27,13 +27,16 @@ const GamePage = () => {
     }
 
     return (
-        <BowlingAreaStyle>
-            <h2 style={{ color: "white" }}>Bowling score</h2>
-            <Grid headers={headers} data={data}/>
-            <ButtonStyle onClick={throwBall}>
-                Throw Ball
-            </ButtonStyle>
-        </BowlingAreaStyle>
+        <Container>
+            <Gif src="/bowling-area.jpg" alt="Bowling GIF"/>
+            <InputColumnContainer>
+                <h2 style={{color: "white"}}>Bowling score</h2>
+                <Grid headers={headers} data={data}/>
+                <ButtonStyle onClick={throwBall}>
+                    Throw Ball
+                </ButtonStyle>
+            </InputColumnContainer>
+        </Container>
     );
 }
 

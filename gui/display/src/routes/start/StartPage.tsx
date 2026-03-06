@@ -1,5 +1,5 @@
 import React, {FC, useCallback, useEffect, useRef} from "react";
-import {BowlingStyle, ButtonStyle, CenterContainer} from "../../shared/SharedStyles";
+import {ButtonStyle, Container, Gif, InputRowContainer} from "../../shared/SharedStyles";
 import {useNavigate} from "react-router";
 import {useName, useSetName} from "../../store/playerSlice";
 
@@ -30,8 +30,9 @@ const StartPage: FC = () => {
     }, []);
 
     return (
-        <BowlingStyle>
-            <CenterContainer>
+        <Container>
+            <Gif src="/bowling.webp" alt="Bowling GIF"/>
+            <InputRowContainer>
                 <input
                     ref={inputRef}
                     type="text"
@@ -41,14 +42,12 @@ const StartPage: FC = () => {
                     placeholder="Enter your name"
                     style={{padding: '10px', width: '400px', fontSize: '16px'}}
                 />
-                <ButtonStyle
-                    onClick={navigateStartGame}
-                    style={{padding: '10px 20px', margin: '0 0 0 10px'}}
-                >
+                <ButtonStyle onClick={navigateStartGame}>
                     Start New Game
                 </ButtonStyle>
-            </CenterContainer>
-        </BowlingStyle>
+            </InputRowContainer>
+
+        </Container>
     )
 }
 
