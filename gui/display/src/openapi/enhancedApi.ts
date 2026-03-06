@@ -17,6 +17,16 @@ export const enhancedApi = projectApi.enhanceEndpoints<
                 },
             ],
         },
+        start: {
+            invalidatesTags: (_, __, req) => [],
+        },
+        play: {
+            invalidatesTags: (_, __, req) => [
+                {
+                    type: "GetScore",
+                },
+            ],
+        },
     },
 });
 
