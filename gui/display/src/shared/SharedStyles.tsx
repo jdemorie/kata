@@ -45,3 +45,11 @@ export const ButtonStyle = styled.button`
     cursor: pointer;
     padding: 10px 20px;
 `;
+
+export const StyledErrorMessage = styled.section`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: red;
+    height: 100%;
+`;

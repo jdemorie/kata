@@ -2,7 +2,7 @@ import React from "react";
 
 interface GridProps {
     headers: string[];
-    data: Array<Record<string, any>>;
+    data?: Array<Record<string, string>>;
 }
 
 const Grid: React.FC<GridProps> = ({headers, data}) => {
@@ -26,7 +26,7 @@ const Grid: React.FC<GridProps> = ({headers, data}) => {
             </tr>
             </thead>
             <tbody>
-            {data.map((row, rowIndex) => (
+            {data?.map((row, rowIndex) => (
                 <tr key={rowIndex}>
                     {headers.map((header, colIndex) => (
                         <td

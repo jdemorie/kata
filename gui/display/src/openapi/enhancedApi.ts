@@ -32,4 +32,6 @@ export const enhancedApi = projectApi.enhanceEndpoints<
 
 export const {
     useGetScoreQuery,
+    useStartMutation,
+    usePlayMutation
 } = enhancedApi;
