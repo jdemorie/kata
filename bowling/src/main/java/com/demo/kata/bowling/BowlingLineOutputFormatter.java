@@ -1,15 +1,16 @@
 package com.demo.kata.bowling;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BowlingLineOutputFormatter {
-  public String getOutputLine(BowlingLine line) {
-    StringBuilder builder = new StringBuilder();
+  public List<String> getOutputLine(BowlingLine line) {
+    List<String> output = new ArrayList<>();
     List<BowlingTurn> turnList = line.getTurns();
     for (BowlingTurn turn : turnList) {
-      builder.append(getOutputLine(turn)).append(" ");
+      output.add(getOutputLine(turn));
     }
-    return builder.toString().trim();
+    return output;
   }
 
   private String getOutputLine(BowlingTurn turn) {

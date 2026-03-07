@@ -106,15 +106,11 @@ components:
     TurnBean:
       type: object
       properties:
-        firstAttempt:
-          type: integer
-          description: "number of pins knocked down on the first attempt"
-        secondAttempt:
-          type: integer
-          description: "number of pins knocked down on the second attempt"
+        value:
+          type: string
+          description: "value of the turn, can be a number or 'X' for strike or '/' for spare"
       required:
-        - firstAttempt
-        - secondAttempt
+        - value
     ResponseBean:
       type: object
       properties:

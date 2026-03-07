@@ -22,16 +22,16 @@ public class BowlingApplicationControllerTest {
   @Test
   void givenABowlingAreaWhenIStartGameThenTheScoreShouldBe() {
     List<ScoreBean> expectedScore = List.of(new ScoreBean("John", 0).turns(List.of(
-        new TurnBean(0, 0),
-        new TurnBean(0, 0),
-        new TurnBean(0, 0),
-        new TurnBean(0, 0),
-        new TurnBean(0, 0),
-        new TurnBean(0, 0),
-        new TurnBean(0, 0),
-        new TurnBean(0, 0),
-        new TurnBean(0, 0),
-        new TurnBean(0, 0)
+        new TurnBean("00"),
+        new TurnBean("00"),
+        new TurnBean("00"),
+        new TurnBean("00"),
+        new TurnBean("00"),
+        new TurnBean("00"),
+        new TurnBean("00"),
+        new TurnBean("00"),
+        new TurnBean("00"),
+        new TurnBean("00")
     )));
     BowlingApplicationScenario scenario = new BowlingApplicationScenario(client, application);
     scenario.givenABowlingServer()

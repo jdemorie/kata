@@ -13,8 +13,8 @@ const GamePage = () => {
     const headers = useColumnDefs();
     const [isLaunching, setIsLaunching] = useState(false);
     const query = useGetScoreQuery();
-    const {playGame, isPlaySuccess, isPlayStart} = usePlayGame();
-    
+    const {playGame, isPlayStart} = usePlayGame();
+
     const data: Array<Record<string, string>> | undefined = useMemo(() => {
         return query.data?.map(scoreBean => {
             const turns = scoreBean.turns;
@@ -24,9 +24,7 @@ const GamePage = () => {
             }
             turnData["Name"] = scoreBean.name;
             for (let i = 0; i < turns.length; i++) {
-                const firstAttempt = turns[i].firstAttempt;
-                const secondAttempt = turns[i].secondAttempt;
-                turnData[`Turn ${i + 1}`] = firstAttempt === undefined ? "0" : firstAttempt.toString() + secondAttempt === undefined ? "0" : secondAttempt.toString();
+                turnData[`Turn ${i + 1}`] = turns[i].value;
             }
             turnData["Score"] = scoreBean.score.toString();
             return turnData;
@@ -40,11 +38,10 @@ const GamePage = () => {
     useEffect(() => {
         if (isPlayStart) {
             setIsLaunching(true);
-        }
-        if (isPlaySuccess) {
+        } else {
             setIsLaunching(false);
         }
-    }, [isPlaySuccess, isPlayStart]);
+    }, [isPlayStart]);
 
     return (
         <AwaitQuery query={query}>

@@ -33,7 +33,7 @@ public class BowlingScenario {
   }
 
   public BowlingScenario thenTheOutputLineShouldBe(String player, String expectedLine) {
-    assertEquals(expectedLine, bowlingArea.getOutputLine(bowlingGame.getCurrentLine(player)));
+    assertEquals(expectedLine, String.join(" ", bowlingArea.getOutputLine(bowlingGame.getCurrentLine(player))));
     return this;
   }
 }

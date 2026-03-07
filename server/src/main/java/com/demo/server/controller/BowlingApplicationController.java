@@ -2,8 +2,8 @@ package com.demo.server.controller;
 
 import com.demo.kata.bowling.BowlingArea;
 import com.demo.kata.bowling.BowlingGame;
+import com.demo.kata.bowling.BowlingLineOutputFormatter;
 import com.demo.kata.bowling.BowlingScore;
-import com.demo.kata.bowling.BowlingTurn;
 import com.demo.server.api.DefaultApi;
 import com.demo.server.model.PlayerBean;
 import com.demo.server.model.ResponseBean;
@@ -33,10 +33,11 @@ public class BowlingApplicationController implements DefaultApi {
     List<ScoreBean> scoreBeanList = new ArrayList<>();
     BowlingScore score = bowlingGame.getScore();
     score.forEach((player, currentLine) -> {
-      List<BowlingTurn> turns = currentLine.getTurns();
+      BowlingLineOutputFormatter formatter = new BowlingLineOutputFormatter();
+      List<String> outputLine = formatter.getOutputLine(currentLine);
       List<TurnBean> turnBeans = new ArrayList<>();
-      for (BowlingTurn turn : turns) {
-        turnBeans.add(new TurnBean(turn.getFirstDownPins(), turn.getSecondDownPins()));
+      for (String turn : outputLine) {
+        turnBeans.add(new TurnBean(turn));
       }
       ScoreBean scoreBean = new ScoreBean(player, bowlingArea.computeScore(currentLine));
       scoreBean.turns(turnBeans);

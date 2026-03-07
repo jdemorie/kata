@@ -16,7 +16,7 @@ public final class BowlingTurn {
     if (attempts == 0) {
       first = numberOfDownPins;
     } else {
-      second = numberOfDownPins;
+      second = Math.min(numberOfDownPins, 10 - first);
     }
     attempts++;
   }

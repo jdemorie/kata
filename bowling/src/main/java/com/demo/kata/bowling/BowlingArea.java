@@ -1,5 +1,7 @@
 package com.demo.kata.bowling;
 
+import java.util.List;
+
 public class BowlingArea {
   private final BowlingLineReader scoreReader;
   private final BowlingLineWriter scoreWriter;
@@ -18,7 +20,7 @@ public class BowlingArea {
     return scoreComputer.computeScore(currentLine);
   }
 
-  public String getOutputLine(BowlingLine currentLine) {
+  public List<String> getOutputLine(BowlingLine currentLine) {
     BowlingLineOutputFormatter outputFormatter = new BowlingLineOutputFormatter();
     return outputFormatter.getOutputLine(currentLine);
   }
