@@ -15,8 +15,10 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import reactor.core.publisher.Mono;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Controller("/server")
 public class BowlingApplicationController implements DefaultApi {
@@ -48,7 +50,10 @@ public class BowlingApplicationController implements DefaultApi {
   @Consumes(MediaType.APPLICATION_JSON)
   @Override
   public Mono<@Valid ResponseBean> play(@Body @NotNull @Valid PlayerBean playerBean) {
-    return Mono.just(new ResponseBean("Player " + playerBean.getName() + " played"));
+    int pinsDowns = new Random().nextInt(10) + 1;
+    bowlingGame.pinsDown(playerBean.getName(), pinsDowns);
+    return Mono.delay(Duration.ofSeconds(3))
+        .then(Mono.just(new ResponseBean("Player " + playerBean.getName() + "  hits " + pinsDowns + " pins")));
   }
 
   @Post("/start")
