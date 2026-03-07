@@ -3,11 +3,12 @@ import React from "react";
 interface GridProps {
     headers: string[];
     data?: Array<Record<string, string>>;
+    testId?: string;
 }
 
-const Grid: React.FC<GridProps> = ({headers, data}) => {
+const Grid: React.FC<GridProps> = ({headers, data, testId}) => {
     return (
-        <table style={{borderCollapse: "collapse", width: "100%"}}>
+        <table style={{borderCollapse: "collapse", width: "100%"}} data-testid={testId}>
             <thead>
             <tr>
                 {headers.map((header, index) => (

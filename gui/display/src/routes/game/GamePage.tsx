@@ -56,7 +56,7 @@ const GamePage = () => {
                         <Gif src="/strike.jpg" alt="Bowling GIF"/>
                         <InputColumnContainer>
                             <h2 style={{color: "white"}}>Bowling score</h2>
-                            <Grid headers={headers} data={data}/>
+                            <Grid headers={headers} data={data} testId="grid"/>
                             <ButtonStyle onClick={throwBall}>
                                 Throw Ball
                             </ButtonStyle>

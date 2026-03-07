@@ -26,7 +26,7 @@ export const usePlayGame = () => {
                     setPlayStart(false);
                 });
         },
-        [],
+        [play],
     );
     return {playGame, isPlaySuccess, isPlayStart};
 };
