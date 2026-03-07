@@ -1,5 +1,5 @@
 package com.demo.kata.bowling;
 
 public interface BowlingLineReader {
-  BowlingLine read();
+  BowlingScore read(String... players);
 }

@@ -9,8 +9,8 @@ public class BowlingArea {
     this.scoreWriter = scoreWriter;
   }
 
-  public BowlingGame start() {
-    return new BowlingGame(scoreReader, scoreWriter);
+  public BowlingGame start(String... players) {
+    return new BowlingGame(scoreReader, scoreWriter, players);
   }
 
   public int computeScore(BowlingLine currentLine) {

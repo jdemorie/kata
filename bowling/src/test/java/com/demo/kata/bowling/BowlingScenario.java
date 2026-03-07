@@ -11,29 +11,29 @@ public class BowlingScenario {
     return this;
   }
 
-  public BowlingScenario whenIStartAGame() {
-    bowlingGame = bowlingArea.start();
+  public BowlingScenario whenIStartAGame(String... players) {
+    bowlingGame = bowlingArea.start(players);
     return this;
   }
 
-  public BowlingScenario thenTheTurnShouldBe(BowlingLine expectedScore) {
-    BowlingLine currentScore = bowlingGame.getCurrentLine();
+  public BowlingScenario thenTheTurnShouldBe(String player, BowlingLine expectedScore) {
+    BowlingLine currentScore = bowlingGame.getCurrentLine(player);
     assertEquals(expectedScore, currentScore);
     return this;
   }
 
-  public BowlingScenario whenIDownPins(int numberOfDownPins) {
-    bowlingGame.pinsDown(numberOfDownPins);
+  public BowlingScenario whenIDownPins(String player, int numberOfDownPins) {
+    bowlingGame.pinsDown(player, numberOfDownPins);
     return this;
   }
 
-  public BowlingScenario thenTheScoreShouldBe(int expectedScore) {
-    assertEquals(expectedScore, bowlingArea.computeScore(bowlingGame.getCurrentLine()));
+  public BowlingScenario thenTheScoreShouldBe(String player, int expectedScore) {
+    assertEquals(expectedScore, bowlingArea.computeScore(bowlingGame.getCurrentLine(player)));
     return this;
   }
 
-  public BowlingScenario thenTheOutputLineShouldBe(String expectedLine) {
-    assertEquals(expectedLine, bowlingArea.getOutputLine(bowlingGame.getCurrentLine()));
+  public BowlingScenario thenTheOutputLineShouldBe(String player, String expectedLine) {
+    assertEquals(expectedLine, bowlingArea.getOutputLine(bowlingGame.getCurrentLine(player)));
     return this;
   }
 }

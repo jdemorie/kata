@@ -7,104 +7,104 @@ public class BowlingTest {
   void givenABowlingAreaWhenIStartAGameThenTheScoreShouldBeZero() {
     BowlingScenario bowlingScenario = new BowlingScenario();
     bowlingScenario.givenABowlingArea()
-        .whenIStartAGame()
-        .thenTheTurnShouldBe(new BowlingLine(new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0)))
-        .thenTheOutputLineShouldBe("00 00 00 00 00 00 00 00 00 00")
-        .thenTheScoreShouldBe(0);
+        .whenIStartAGame("player")
+        .thenTheTurnShouldBe("player", new BowlingLine(new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0)))
+        .thenTheOutputLineShouldBe("player", "00 00 00 00 00 00 00 00 00 00")
+        .thenTheScoreShouldBe("player", 0);
   }
 
   @Test
   void givenABowlingAreaWhenIDown4PinsThenTheScoreShouldBe4() {
     BowlingScenario bowlingScenario = new BowlingScenario();
     bowlingScenario.givenABowlingArea()
-        .whenIStartAGame()
-        .whenIDownPins(4)
-        .thenTheTurnShouldBe(new BowlingLine(new BowlingTurn(4, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0)))
-        .thenTheOutputLineShouldBe("40 00 00 00 00 00 00 00 00 00")
-        .thenTheScoreShouldBe(4);
+        .whenIStartAGame("player")
+        .whenIDownPins("player", 4)
+        .thenTheTurnShouldBe("player", new BowlingLine(new BowlingTurn(4, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0)))
+        .thenTheOutputLineShouldBe("player", "40 00 00 00 00 00 00 00 00 00")
+        .thenTheScoreShouldBe("player", 4);
   }
 
   @Test
   void givenABowlingAreaWhenIDown4PinsThen5PinsThenTheScoreShouldBe9() {
     BowlingScenario bowlingScenario = new BowlingScenario();
     bowlingScenario.givenABowlingArea()
-        .whenIStartAGame()
-        .whenIDownPins(4)
-        .whenIDownPins(5)
-        .thenTheTurnShouldBe(new BowlingLine(new BowlingTurn(4, 5),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0)))
-        .thenTheOutputLineShouldBe("45 00 00 00 00 00 00 00 00 00")
-        .thenTheScoreShouldBe(9);
+        .whenIStartAGame("player")
+        .whenIDownPins("player", 4)
+        .whenIDownPins("player", 5)
+        .thenTheTurnShouldBe("player", new BowlingLine(new BowlingTurn(4, 5),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0)))
+        .thenTheOutputLineShouldBe("player", "45 00 00 00 00 00 00 00 00 00")
+        .thenTheScoreShouldBe("player", 9);
   }
 
   @Test
   void givenABowlingAreaWhenIDown3PinsOnSecondTurnThenTheScoreShouldBe9() {
     BowlingScenario bowlingScenario = new BowlingScenario();
     bowlingScenario.givenABowlingArea()
-        .whenIStartAGame()
-        .whenIDownPins(4)
-        .whenIDownPins(5)
-        .whenIDownPins(3)
-        .thenTheTurnShouldBe(new BowlingLine(new BowlingTurn(4, 5),
-                                             new BowlingTurn(3, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0)))
-        .thenTheOutputLineShouldBe("45 30 00 00 00 00 00 00 00 00")
-        .thenTheScoreShouldBe(12);
+        .whenIStartAGame("player")
+        .whenIDownPins("player", 4)
+        .whenIDownPins("player", 5)
+        .whenIDownPins("player", 3)
+        .thenTheTurnShouldBe("player", new BowlingLine(new BowlingTurn(4, 5),
+                                                       new BowlingTurn(3, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0)))
+        .thenTheOutputLineShouldBe("player", "45 30 00 00 00 00 00 00 00 00")
+        .thenTheScoreShouldBe("player", 12);
   }
 
   @Test
   void givenABowlingAreaWhenIMissedPinsOnSecondTurnThenTheScoreShouldBe9() {
     BowlingScenario bowlingScenario = new BowlingScenario();
     bowlingScenario.givenABowlingArea()
-        .whenIStartAGame()
-        .whenIDownPins(4)
-        .whenIDownPins(0)
-        .whenIDownPins(3)
-        .thenTheTurnShouldBe(new BowlingLine(new BowlingTurn(4, 0),
-                                             new BowlingTurn(3, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0)))
-        .thenTheOutputLineShouldBe("4- 30 00 00 00 00 00 00 00 00")
-        .thenTheScoreShouldBe(7);
+        .whenIStartAGame("player")
+        .whenIDownPins("player", 4)
+        .whenIDownPins("player", 0)
+        .whenIDownPins("player", 3)
+        .thenTheTurnShouldBe("player", new BowlingLine(new BowlingTurn(4, 0),
+                                                       new BowlingTurn(3, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0)))
+        .thenTheOutputLineShouldBe("player", "4- 30 00 00 00 00 00 00 00 00")
+        .thenTheScoreShouldBe("player", 7);
   }
 
 
@@ -112,491 +112,491 @@ public class BowlingTest {
   void givenABowlingAreaWhenIMissedAllSecondPinsThenTheScoreShouldBe9() {
     BowlingScenario bowlingScenario = new BowlingScenario();
     bowlingScenario.givenABowlingArea()
-        .whenIStartAGame()
-        .whenIDownPins(9)
-        .whenIDownPins(0)
-        .whenIDownPins(9)
-        .whenIDownPins(0)
-        .whenIDownPins(9)
-        .whenIDownPins(0)
-        .whenIDownPins(9)
-        .whenIDownPins(0)
-        .whenIDownPins(9)
-        .whenIDownPins(0)
-        .whenIDownPins(9)
-        .whenIDownPins(0)
-        .whenIDownPins(9)
-        .whenIDownPins(0)
-        .whenIDownPins(9)
-        .whenIDownPins(0)
-        .whenIDownPins(9)
-        .whenIDownPins(0)
-        .whenIDownPins(9)
-        .whenIDownPins(0)
-        .thenTheTurnShouldBe(new BowlingLine(new BowlingTurn(9, 0),
-                                             new BowlingTurn(9, 0),
-                                             new BowlingTurn(9, 0),
-                                             new BowlingTurn(9, 0),
-                                             new BowlingTurn(9, 0),
-                                             new BowlingTurn(9, 0),
-                                             new BowlingTurn(9, 0),
-                                             new BowlingTurn(9, 0),
-                                             new BowlingTurn(9, 0),
-                                             new BowlingTurn(9, 0)))
-        .thenTheOutputLineShouldBe("9- 9- 9- 9- 9- 9- 9- 9- 9- 9-")
-        .thenTheScoreShouldBe(90);
+        .whenIStartAGame("player")
+        .whenIDownPins("player", 9)
+        .whenIDownPins("player", 0)
+        .whenIDownPins("player", 9)
+        .whenIDownPins("player", 0)
+        .whenIDownPins("player", 9)
+        .whenIDownPins("player", 0)
+        .whenIDownPins("player", 9)
+        .whenIDownPins("player", 0)
+        .whenIDownPins("player", 9)
+        .whenIDownPins("player", 0)
+        .whenIDownPins("player", 9)
+        .whenIDownPins("player", 0)
+        .whenIDownPins("player", 9)
+        .whenIDownPins("player", 0)
+        .whenIDownPins("player", 9)
+        .whenIDownPins("player", 0)
+        .whenIDownPins("player", 9)
+        .whenIDownPins("player", 0)
+        .whenIDownPins("player", 9)
+        .whenIDownPins("player", 0)
+        .thenTheTurnShouldBe("player", new BowlingLine(new BowlingTurn(9, 0),
+                                                       new BowlingTurn(9, 0),
+                                                       new BowlingTurn(9, 0),
+                                                       new BowlingTurn(9, 0),
+                                                       new BowlingTurn(9, 0),
+                                                       new BowlingTurn(9, 0),
+                                                       new BowlingTurn(9, 0),
+                                                       new BowlingTurn(9, 0),
+                                                       new BowlingTurn(9, 0),
+                                                       new BowlingTurn(9, 0)))
+        .thenTheOutputLineShouldBe("player", "9- 9- 9- 9- 9- 9- 9- 9- 9- 9-")
+        .thenTheScoreShouldBe("player", 90);
   }
 
   @Test
   void givenABowlingAreaWhenIDown4PinsThen6PinsThenTheScoreShouldBeSpare() {
     BowlingScenario bowlingScenario = new BowlingScenario();
     bowlingScenario.givenABowlingArea()
-        .whenIStartAGame()
-        .whenIDownPins(4)
-        .whenIDownPins(6)
-        .thenTheTurnShouldBe(new BowlingLine(new BowlingTurn(4, 6),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0)))
-        .thenTheOutputLineShouldBe("4/ 00 00 00 00 00 00 00 00 00")
-        .thenTheScoreShouldBe(10);
+        .whenIStartAGame("player")
+        .whenIDownPins("player", 4)
+        .whenIDownPins("player", 6)
+        .thenTheTurnShouldBe("player", new BowlingLine(new BowlingTurn(4, 6),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0)))
+        .thenTheOutputLineShouldBe("player", "4/ 00 00 00 00 00 00 00 00 00")
+        .thenTheScoreShouldBe("player", 10);
   }
 
   @Test
   void givenABowlingAreaWhenIMakeSpareAndDown5PinsAfterThenTheScoreShouldBe() {
     BowlingScenario bowlingScenario = new BowlingScenario();
     bowlingScenario.givenABowlingArea()
-        .whenIStartAGame()
-        .whenIDownPins(4)
-        .whenIDownPins(6)
-        .whenIDownPins(5)
-        .thenTheTurnShouldBe(new BowlingLine(new BowlingTurn(4, 6),
-                                             new BowlingTurn(5, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0)))
-        .thenTheOutputLineShouldBe("4/ 50 00 00 00 00 00 00 00 00")
-        .thenTheScoreShouldBe(20);
+        .whenIStartAGame("player")
+        .whenIDownPins("player", 4)
+        .whenIDownPins("player", 6)
+        .whenIDownPins("player", 5)
+        .thenTheTurnShouldBe("player", new BowlingLine(new BowlingTurn(4, 6),
+                                                       new BowlingTurn(5, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0)))
+        .thenTheOutputLineShouldBe("player", "4/ 50 00 00 00 00 00 00 00 00")
+        .thenTheScoreShouldBe("player", 20);
   }
 
   @Test
   void givenABowlingAreaWhenIMakeSpareAndDown5And3PinsAfterThenTheScoreShouldBe() {
     BowlingScenario bowlingScenario = new BowlingScenario();
     bowlingScenario.givenABowlingArea()
-        .whenIStartAGame()
-        .whenIDownPins(4)
-        .whenIDownPins(6)
-        .whenIDownPins(5)
-        .whenIDownPins(3)
-        .thenTheTurnShouldBe(new BowlingLine(new BowlingTurn(4, 6),
-                                             new BowlingTurn(5, 3),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0)))
-        .thenTheOutputLineShouldBe("4/ 53 00 00 00 00 00 00 00 00")
-        .thenTheScoreShouldBe(23);
+        .whenIStartAGame("player")
+        .whenIDownPins("player", 4)
+        .whenIDownPins("player", 6)
+        .whenIDownPins("player", 5)
+        .whenIDownPins("player", 3)
+        .thenTheTurnShouldBe("player", new BowlingLine(new BowlingTurn(4, 6),
+                                                       new BowlingTurn(5, 3),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0)))
+        .thenTheOutputLineShouldBe("player", "4/ 53 00 00 00 00 00 00 00 00")
+        .thenTheScoreShouldBe("player", 23);
   }
 
   @Test
   void givenABowlingAreaWhenIMakeSpareAndDoAnotherSpareAfterThenTheScoreShouldBe() {
     BowlingScenario bowlingScenario = new BowlingScenario();
     bowlingScenario.givenABowlingArea()
-        .whenIStartAGame()
-        .whenIDownPins(4)
-        .whenIDownPins(6)
-        .whenIDownPins(5)
-        .whenIDownPins(5)
-        .thenTheTurnShouldBe(new BowlingLine(new BowlingTurn(4, 6),
-                                             new BowlingTurn(5, 5),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0)))
-        .thenTheOutputLineShouldBe("4/ 5/ 00 00 00 00 00 00 00 00")
-        .thenTheScoreShouldBe(25);
+        .whenIStartAGame("player")
+        .whenIDownPins("player", 4)
+        .whenIDownPins("player", 6)
+        .whenIDownPins("player", 5)
+        .whenIDownPins("player", 5)
+        .thenTheTurnShouldBe("player", new BowlingLine(new BowlingTurn(4, 6),
+                                                       new BowlingTurn(5, 5),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0)))
+        .thenTheOutputLineShouldBe("player", "4/ 5/ 00 00 00 00 00 00 00 00")
+        .thenTheScoreShouldBe("player", 25);
   }
 
   @Test
   void givenABowlingAreaWhenIMakeSpareForAllTurnsThenTheScoreShouldBe() {
     BowlingScenario bowlingScenario = new BowlingScenario();
     bowlingScenario.givenABowlingArea()
-        .whenIStartAGame()
-        .whenIDownPins(5)
-        .whenIDownPins(5)
-        .whenIDownPins(5)
-        .whenIDownPins(5)
-        .whenIDownPins(5)
-        .whenIDownPins(5)
-        .whenIDownPins(5)
-        .whenIDownPins(5)
-        .whenIDownPins(5)
-        .whenIDownPins(5)
-        .whenIDownPins(5)
-        .whenIDownPins(5)
-        .whenIDownPins(5)
-        .whenIDownPins(5)
-        .whenIDownPins(5)
-        .whenIDownPins(5)
-        .whenIDownPins(5)
-        .whenIDownPins(5)
-        .whenIDownPins(5)
-        .whenIDownPins(5)
-        .whenIDownPins(5)
-        .thenTheTurnShouldBe(new BowlingLine(new BowlingTurn(5, 5),
-                                             new BowlingTurn(5, 5),
-                                             new BowlingTurn(5, 5),
-                                             new BowlingTurn(5, 5),
-                                             new BowlingTurn(5, 5),
-                                             new BowlingTurn(5, 5),
-                                             new BowlingTurn(5, 5),
-                                             new BowlingTurn(5, 5),
-                                             new BowlingTurn(5, 5),
-                                             new BowlingTurn(5, 5),
-                                             new BowlingTurn(5, 0)))
-        .thenTheOutputLineShouldBe("5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/ 50")
-        .thenTheScoreShouldBe(150);
+        .whenIStartAGame("player")
+        .whenIDownPins("player", 5)
+        .whenIDownPins("player", 5)
+        .whenIDownPins("player", 5)
+        .whenIDownPins("player", 5)
+        .whenIDownPins("player", 5)
+        .whenIDownPins("player", 5)
+        .whenIDownPins("player", 5)
+        .whenIDownPins("player", 5)
+        .whenIDownPins("player", 5)
+        .whenIDownPins("player", 5)
+        .whenIDownPins("player", 5)
+        .whenIDownPins("player", 5)
+        .whenIDownPins("player", 5)
+        .whenIDownPins("player", 5)
+        .whenIDownPins("player", 5)
+        .whenIDownPins("player", 5)
+        .whenIDownPins("player", 5)
+        .whenIDownPins("player", 5)
+        .whenIDownPins("player", 5)
+        .whenIDownPins("player", 5)
+        .whenIDownPins("player", 5)
+        .thenTheTurnShouldBe("player", new BowlingLine(new BowlingTurn(5, 5),
+                                                       new BowlingTurn(5, 5),
+                                                       new BowlingTurn(5, 5),
+                                                       new BowlingTurn(5, 5),
+                                                       new BowlingTurn(5, 5),
+                                                       new BowlingTurn(5, 5),
+                                                       new BowlingTurn(5, 5),
+                                                       new BowlingTurn(5, 5),
+                                                       new BowlingTurn(5, 5),
+                                                       new BowlingTurn(5, 5),
+                                                       new BowlingTurn(5, 0)))
+        .thenTheOutputLineShouldBe("player", "5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/ 50")
+        .thenTheScoreShouldBe("player", 150);
   }
 
   @Test
   void givenABowlingAreaWhenIMakeTwoConsecutiveSparesAndDown4PinsAfterThenTheScoreShouldBe() {
     BowlingScenario bowlingScenario = new BowlingScenario();
     bowlingScenario.givenABowlingArea()
-        .whenIStartAGame()
-        .whenIDownPins(4)
-        .whenIDownPins(6)
-        .whenIDownPins(5)
-        .whenIDownPins(5)
-        .whenIDownPins(4)
-        .thenTheTurnShouldBe(new BowlingLine(new BowlingTurn(4, 6),
-                                             new BowlingTurn(5, 5),
-                                             new BowlingTurn(4, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0)))
-        .thenTheOutputLineShouldBe("4/ 5/ 40 00 00 00 00 00 00 00")
-        .thenTheScoreShouldBe(33);
+        .whenIStartAGame("player")
+        .whenIDownPins("player", 4)
+        .whenIDownPins("player", 6)
+        .whenIDownPins("player", 5)
+        .whenIDownPins("player", 5)
+        .whenIDownPins("player", 4)
+        .thenTheTurnShouldBe("player", new BowlingLine(new BowlingTurn(4, 6),
+                                                       new BowlingTurn(5, 5),
+                                                       new BowlingTurn(4, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0)))
+        .thenTheOutputLineShouldBe("player", "4/ 5/ 40 00 00 00 00 00 00 00")
+        .thenTheScoreShouldBe("player", 33);
   }
 
   @Test
   void givenABowlingAreaWhenIDoAStrikeThenTheScoreShouldBe() {
     BowlingScenario bowlingScenario = new BowlingScenario();
     bowlingScenario.givenABowlingArea()
-        .whenIStartAGame()
-        .whenIDownPins(10)
-        .thenTheTurnShouldBe(new BowlingLine(new BowlingTurn(10, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0)))
-        .thenTheOutputLineShouldBe("X 00 00 00 00 00 00 00 00 00")
-        .thenTheScoreShouldBe(10);
+        .whenIStartAGame("player")
+        .whenIDownPins("player", 10)
+        .thenTheTurnShouldBe("player", new BowlingLine(new BowlingTurn(10, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0)))
+        .thenTheOutputLineShouldBe("player", "X 00 00 00 00 00 00 00 00 00")
+        .thenTheScoreShouldBe("player", 10);
   }
 
   @Test
   void givenABowlingAreaWhenIDoAStrikeAfterPinsDownThenTheScoreShouldBe() {
     BowlingScenario bowlingScenario = new BowlingScenario();
     bowlingScenario.givenABowlingArea()
-        .whenIStartAGame()
-        .whenIDownPins(1)
-        .whenIDownPins(2)
-        .whenIDownPins(10)
-        .whenIDownPins(7)
-        .whenIDownPins(1)
-        .thenTheTurnShouldBe(new BowlingLine(new BowlingTurn(1, 2),
-                                             new BowlingTurn(10, 0),
-                                             new BowlingTurn(7, 1),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0)))
-        .thenTheOutputLineShouldBe("12 X 71 00 00 00 00 00 00 00")
-        .thenTheScoreShouldBe(29);
+        .whenIStartAGame("player")
+        .whenIDownPins("player", 1)
+        .whenIDownPins("player", 2)
+        .whenIDownPins("player", 10)
+        .whenIDownPins("player", 7)
+        .whenIDownPins("player", 1)
+        .thenTheTurnShouldBe("player", new BowlingLine(new BowlingTurn(1, 2),
+                                                       new BowlingTurn(10, 0),
+                                                       new BowlingTurn(7, 1),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0)))
+        .thenTheOutputLineShouldBe("player", "12 X 71 00 00 00 00 00 00 00")
+        .thenTheScoreShouldBe("player", 29);
   }
 
   @Test
   void givenABowlingAreaWhenIDoAStrikeAndIDown4PinsThenTheScoreShouldBe() {
     BowlingScenario bowlingScenario = new BowlingScenario();
     bowlingScenario.givenABowlingArea()
-        .whenIStartAGame()
-        .whenIDownPins(10)
-        .whenIDownPins(4)
-        .thenTheTurnShouldBe(new BowlingLine(new BowlingTurn(10, 0),
-                                             new BowlingTurn(4, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0)))
-        .thenTheOutputLineShouldBe("X 40 00 00 00 00 00 00 00 00")
-        .thenTheScoreShouldBe(14);
+        .whenIStartAGame("player")
+        .whenIDownPins("player", 10)
+        .whenIDownPins("player", 4)
+        .thenTheTurnShouldBe("player", new BowlingLine(new BowlingTurn(10, 0),
+                                                       new BowlingTurn(4, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0)))
+        .thenTheOutputLineShouldBe("player", "X 40 00 00 00 00 00 00 00 00")
+        .thenTheScoreShouldBe("player", 14);
   }
 
   @Test
   void givenABowlingAreaWhenIDoAStrikeAndIDown4And2PinsThenTheScoreShouldBe() {
     BowlingScenario bowlingScenario = new BowlingScenario();
     bowlingScenario.givenABowlingArea()
-        .whenIStartAGame()
-        .whenIDownPins(10)
-        .whenIDownPins(4)
-        .whenIDownPins(2)
-        .thenTheTurnShouldBe(new BowlingLine(new BowlingTurn(10, 0),
-                                             new BowlingTurn(4, 2),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0)))
-        .thenTheOutputLineShouldBe("X 42 00 00 00 00 00 00 00 00")
-        .thenTheScoreShouldBe(22);
+        .whenIStartAGame("player")
+        .whenIDownPins("player", 10)
+        .whenIDownPins("player", 4)
+        .whenIDownPins("player", 2)
+        .thenTheTurnShouldBe("player", new BowlingLine(new BowlingTurn(10, 0),
+                                                       new BowlingTurn(4, 2),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0)))
+        .thenTheOutputLineShouldBe("player", "X 42 00 00 00 00 00 00 00 00")
+        .thenTheScoreShouldBe("player", 22);
   }
 
   @Test
   void givenABowlingAreaWhenIDoAStrikeAndIDownPinsOnNext2TurnsThenTheScoreShouldBe() {
     BowlingScenario bowlingScenario = new BowlingScenario();
     bowlingScenario.givenABowlingArea()
-        .whenIStartAGame()
-        .whenIDownPins(10)
-        .whenIDownPins(4)
-        .whenIDownPins(2)
-        .whenIDownPins(6)
-        .whenIDownPins(2)
-        .thenTheTurnShouldBe(new BowlingLine(new BowlingTurn(10, 0),
-                                             new BowlingTurn(4, 2),
-                                             new BowlingTurn(6, 2),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0)))
-        .thenTheOutputLineShouldBe("X 42 62 00 00 00 00 00 00 00")
-        .thenTheScoreShouldBe(30);
+        .whenIStartAGame("player")
+        .whenIDownPins("player", 10)
+        .whenIDownPins("player", 4)
+        .whenIDownPins("player", 2)
+        .whenIDownPins("player", 6)
+        .whenIDownPins("player", 2)
+        .thenTheTurnShouldBe("player", new BowlingLine(new BowlingTurn(10, 0),
+                                                       new BowlingTurn(4, 2),
+                                                       new BowlingTurn(6, 2),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0)))
+        .thenTheOutputLineShouldBe("player", "X 42 62 00 00 00 00 00 00 00")
+        .thenTheScoreShouldBe("player", 30);
   }
 
   @Test
   void givenABowlingAreaWhenIDoTwoConsecutiveStrikesThenTheScoreShouldBe() {
     BowlingScenario bowlingScenario = new BowlingScenario();
     bowlingScenario.givenABowlingArea()
-        .whenIStartAGame()
-        .whenIDownPins(10)
-        .whenIDownPins(10)
-        .thenTheTurnShouldBe(new BowlingLine(new BowlingTurn(10, 0),
-                                             new BowlingTurn(10, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0)))
-        .thenTheOutputLineShouldBe("X X 00 00 00 00 00 00 00 00")
-        .thenTheScoreShouldBe(20);
+        .whenIStartAGame("player")
+        .whenIDownPins("player", 10)
+        .whenIDownPins("player", 10)
+        .thenTheTurnShouldBe("player", new BowlingLine(new BowlingTurn(10, 0),
+                                                       new BowlingTurn(10, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0)))
+        .thenTheOutputLineShouldBe("player", "X X 00 00 00 00 00 00 00 00")
+        .thenTheScoreShouldBe("player", 20);
   }
 
   @Test
   void givenABowlingAreaWhenIDoTwoConsecutiveStrikesAndIDownPinsOnNext2TurnsThenTheScoreShouldBe() {
     BowlingScenario bowlingScenario = new BowlingScenario();
     bowlingScenario.givenABowlingArea()
-        .whenIStartAGame()
-        .whenIDownPins(10)
-        .whenIDownPins(10)
-        .whenIDownPins(3)
-        .whenIDownPins(2)
-        .whenIDownPins(4)
-        .whenIDownPins(1)
-        .thenTheTurnShouldBe(new BowlingLine(new BowlingTurn(10, 0),
-                                             new BowlingTurn(10, 0),
-                                             new BowlingTurn(3, 2),
-                                             new BowlingTurn(4, 1),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0)))
-        .thenTheOutputLineShouldBe("X X 32 41 00 00 00 00 00 00")
-        .thenTheScoreShouldBe(48);
+        .whenIStartAGame("player")
+        .whenIDownPins("player", 10)
+        .whenIDownPins("player", 10)
+        .whenIDownPins("player", 3)
+        .whenIDownPins("player", 2)
+        .whenIDownPins("player", 4)
+        .whenIDownPins("player", 1)
+        .thenTheTurnShouldBe("player", new BowlingLine(new BowlingTurn(10, 0),
+                                                       new BowlingTurn(10, 0),
+                                                       new BowlingTurn(3, 2),
+                                                       new BowlingTurn(4, 1),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0)))
+        .thenTheOutputLineShouldBe("player", "X X 32 41 00 00 00 00 00 00")
+        .thenTheScoreShouldBe("player", 48);
   }
 
   @Test
   void givenABowlingAreaWhenIDoThreeConsecutiveStrikesAndIDownPinsOnNext2TurnsThenTheScoreShouldBe() {
     BowlingScenario bowlingScenario = new BowlingScenario();
     bowlingScenario.givenABowlingArea()
-        .whenIStartAGame()
-        .whenIDownPins(10)
-        .whenIDownPins(10)
-        .whenIDownPins(10)
-        .whenIDownPins(3)
-        .whenIDownPins(2)
-        .whenIDownPins(4)
-        .whenIDownPins(1)
-        .thenTheTurnShouldBe(new BowlingLine(new BowlingTurn(10, 0),
-                                             new BowlingTurn(10, 0),
-                                             new BowlingTurn(10, 0),
-                                             new BowlingTurn(3, 2),
-                                             new BowlingTurn(4, 1),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0)))
-        .thenTheOutputLineShouldBe("X X X 32 41 00 00 00 00 00")
-        .thenTheScoreShouldBe(78);
+        .whenIStartAGame("player")
+        .whenIDownPins("player", 10)
+        .whenIDownPins("player", 10)
+        .whenIDownPins("player", 10)
+        .whenIDownPins("player", 3)
+        .whenIDownPins("player", 2)
+        .whenIDownPins("player", 4)
+        .whenIDownPins("player", 1)
+        .thenTheTurnShouldBe("player", new BowlingLine(new BowlingTurn(10, 0),
+                                                       new BowlingTurn(10, 0),
+                                                       new BowlingTurn(10, 0),
+                                                       new BowlingTurn(3, 2),
+                                                       new BowlingTurn(4, 1),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0)))
+        .thenTheOutputLineShouldBe("player", "X X X 32 41 00 00 00 00 00")
+        .thenTheScoreShouldBe("player", 78);
   }
 
   @Test
   void givenABowlingAreaWhenIDoFourConsecutiveStrikesAndIDownPinsOnNext2TurnsThenTheScoreShouldBe() {
     BowlingScenario bowlingScenario = new BowlingScenario();
     bowlingScenario.givenABowlingArea()
-        .whenIStartAGame()
-        .whenIDownPins(10)
-        .whenIDownPins(10)
-        .whenIDownPins(10)
-        .whenIDownPins(10)
-        .whenIDownPins(3)
-        .whenIDownPins(2)
-        .whenIDownPins(4)
-        .whenIDownPins(1)
-        .thenTheTurnShouldBe(new BowlingLine(new BowlingTurn(10, 0),
-                                             new BowlingTurn(10, 0),
-                                             new BowlingTurn(10, 0),
-                                             new BowlingTurn(10, 0),
-                                             new BowlingTurn(3, 2),
-                                             new BowlingTurn(4, 1),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0)))
-        .thenTheOutputLineShouldBe("X X X X 32 41 00 00 00 00")
-        .thenTheScoreShouldBe(108);
+        .whenIStartAGame("player")
+        .whenIDownPins("player", 10)
+        .whenIDownPins("player", 10)
+        .whenIDownPins("player", 10)
+        .whenIDownPins("player", 10)
+        .whenIDownPins("player", 3)
+        .whenIDownPins("player", 2)
+        .whenIDownPins("player", 4)
+        .whenIDownPins("player", 1)
+        .thenTheTurnShouldBe("player", new BowlingLine(new BowlingTurn(10, 0),
+                                                       new BowlingTurn(10, 0),
+                                                       new BowlingTurn(10, 0),
+                                                       new BowlingTurn(10, 0),
+                                                       new BowlingTurn(3, 2),
+                                                       new BowlingTurn(4, 1),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0)))
+        .thenTheOutputLineShouldBe("player", "X X X X 32 41 00 00 00 00")
+        .thenTheScoreShouldBe("player", 108);
   }
 
   @Test
   void givenABowlingAreaWhenIDoNineConsecutiveStrikesThenTheScoreShouldBe() {
     BowlingScenario bowlingScenario = new BowlingScenario();
     bowlingScenario.givenABowlingArea()
-        .whenIStartAGame()
-        .whenIDownPins(10)
-        .whenIDownPins(10)
-        .whenIDownPins(10)
-        .whenIDownPins(10)
-        .whenIDownPins(10)
-        .whenIDownPins(10)
-        .whenIDownPins(10)
-        .whenIDownPins(10)
-        .thenTheTurnShouldBe(new BowlingLine(new BowlingTurn(10, 0),
-                                             new BowlingTurn(10, 0),
-                                             new BowlingTurn(10, 0),
-                                             new BowlingTurn(10, 0),
-                                             new BowlingTurn(10, 0),
-                                             new BowlingTurn(10, 0),
-                                             new BowlingTurn(10, 0),
-                                             new BowlingTurn(10, 0),
-                                             new BowlingTurn(0, 0),
-                                             new BowlingTurn(0, 0)))
-        .thenTheOutputLineShouldBe("X X X X X X X X 00 00")
-        .thenTheScoreShouldBe(200);
+        .whenIStartAGame("player")
+        .whenIDownPins("player", 10)
+        .whenIDownPins("player", 10)
+        .whenIDownPins("player", 10)
+        .whenIDownPins("player", 10)
+        .whenIDownPins("player", 10)
+        .whenIDownPins("player", 10)
+        .whenIDownPins("player", 10)
+        .whenIDownPins("player", 10)
+        .thenTheTurnShouldBe("player", new BowlingLine(new BowlingTurn(10, 0),
+                                                       new BowlingTurn(10, 0),
+                                                       new BowlingTurn(10, 0),
+                                                       new BowlingTurn(10, 0),
+                                                       new BowlingTurn(10, 0),
+                                                       new BowlingTurn(10, 0),
+                                                       new BowlingTurn(10, 0),
+                                                       new BowlingTurn(10, 0),
+                                                       new BowlingTurn(0, 0),
+                                                       new BowlingTurn(0, 0)))
+        .thenTheOutputLineShouldBe("player", "X X X X X X X X 00 00")
+        .thenTheScoreShouldBe("player", 200);
   }
 
   @Test
   void givenABowlingAreaWhenIDoTenConsecutiveStrikesThenTheScoreShouldBe() {
     BowlingScenario bowlingScenario = new BowlingScenario();
     bowlingScenario.givenABowlingArea()
-        .whenIStartAGame()
-        .whenIDownPins(10)
-        .whenIDownPins(10)
-        .whenIDownPins(10)
-        .whenIDownPins(10)
-        .whenIDownPins(10)
-        .whenIDownPins(10)
-        .whenIDownPins(10)
-        .whenIDownPins(10)
-        .whenIDownPins(10)
-        .whenIDownPins(10)
-        .thenTheTurnShouldBe(new BowlingLine(new BowlingTurn(10, 0),
-                                             new BowlingTurn(10, 0),
-                                             new BowlingTurn(10, 0),
-                                             new BowlingTurn(10, 0),
-                                             new BowlingTurn(10, 0),
-                                             new BowlingTurn(10, 0),
-                                             new BowlingTurn(10, 0),
-                                             new BowlingTurn(10, 0),
-                                             new BowlingTurn(10, 0),
-                                             new BowlingTurn(10, 0)))
-        .thenTheOutputLineShouldBe("X X X X X X X X X X")
-        .thenTheScoreShouldBe(260);
+        .whenIStartAGame("player")
+        .whenIDownPins("player", 10)
+        .whenIDownPins("player", 10)
+        .whenIDownPins("player", 10)
+        .whenIDownPins("player", 10)
+        .whenIDownPins("player", 10)
+        .whenIDownPins("player", 10)
+        .whenIDownPins("player", 10)
+        .whenIDownPins("player", 10)
+        .whenIDownPins("player", 10)
+        .whenIDownPins("player", 10)
+        .thenTheTurnShouldBe("player", new BowlingLine(new BowlingTurn(10, 0),
+                                                       new BowlingTurn(10, 0),
+                                                       new BowlingTurn(10, 0),
+                                                       new BowlingTurn(10, 0),
+                                                       new BowlingTurn(10, 0),
+                                                       new BowlingTurn(10, 0),
+                                                       new BowlingTurn(10, 0),
+                                                       new BowlingTurn(10, 0),
+                                                       new BowlingTurn(10, 0),
+                                                       new BowlingTurn(10, 0)))
+        .thenTheOutputLineShouldBe("player", "X X X X X X X X X X")
+        .thenTheScoreShouldBe("player", 260);
   }
 
   @Test
   void givenABowlingAreaWhenIDoAllStrikesThenTheScoreShouldBe() {
     BowlingScenario bowlingScenario = new BowlingScenario();
     bowlingScenario.givenABowlingArea()
-        .whenIStartAGame()
-        .whenIDownPins(10)
-        .whenIDownPins(10)
-        .whenIDownPins(10)
-        .whenIDownPins(10)
-        .whenIDownPins(10)
-        .whenIDownPins(10)
-        .whenIDownPins(10)
-        .whenIDownPins(10)
-        .whenIDownPins(10)
-        .whenIDownPins(10)
-        .whenIDownPins(10)
-        .whenIDownPins(10)
-        .thenTheTurnShouldBe(new BowlingLine(new BowlingTurn(10, 0),
-                                             new BowlingTurn(10, 0),
-                                             new BowlingTurn(10, 0),
-                                             new BowlingTurn(10, 0),
-                                             new BowlingTurn(10, 0),
-                                             new BowlingTurn(10, 0),
-                                             new BowlingTurn(10, 0),
-                                             new BowlingTurn(10, 0),
-                                             new BowlingTurn(10, 0),
-                                             new BowlingTurn(10, 0),
-                                             new BowlingTurn(10, 0),
-                                             new BowlingTurn(10, 0)))
-        .thenTheOutputLineShouldBe("X X X X X X X X X X X X")
-        .thenTheScoreShouldBe(300);
+        .whenIStartAGame("player")
+        .whenIDownPins("player", 10)
+        .whenIDownPins("player", 10)
+        .whenIDownPins("player", 10)
+        .whenIDownPins("player", 10)
+        .whenIDownPins("player", 10)
+        .whenIDownPins("player", 10)
+        .whenIDownPins("player", 10)
+        .whenIDownPins("player", 10)
+        .whenIDownPins("player", 10)
+        .whenIDownPins("player", 10)
+        .whenIDownPins("player", 10)
+        .whenIDownPins("player", 10)
+        .thenTheTurnShouldBe("player", new BowlingLine(new BowlingTurn(10, 0),
+                                                       new BowlingTurn(10, 0),
+                                                       new BowlingTurn(10, 0),
+                                                       new BowlingTurn(10, 0),
+                                                       new BowlingTurn(10, 0),
+                                                       new BowlingTurn(10, 0),
+                                                       new BowlingTurn(10, 0),
+                                                       new BowlingTurn(10, 0),
+                                                       new BowlingTurn(10, 0),
+                                                       new BowlingTurn(10, 0),
+                                                       new BowlingTurn(10, 0),
+                                                       new BowlingTurn(10, 0)))
+        .thenTheOutputLineShouldBe("player", "X X X X X X X X X X X X")
+        .thenTheScoreShouldBe("player", 300);
   }
 }
