@@ -12,7 +12,6 @@ jest.mock("../../../openapi/enhancedApi", () => ({
     ...jest.requireActual("../../../openapi/enhancedApi"),
     useGetScoreQuery: jest.fn(),
     usePlayMutation: jest.fn(),
-    useStartMutation: jest.fn(),
 }));
 
 describe("GamePage Component", () => {

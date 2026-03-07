@@ -2,12 +2,14 @@ import React, {FC, useCallback, useEffect, useRef} from "react";
 import {ButtonStyle, Container, Gif, InputRowContainer} from "../../shared/SharedStyles";
 import {useNavigate} from "react-router";
 import {useName, useSetName} from "../../store/playerSlice";
+import {useStartGame} from "./useStartGame";
 
 const StartPage: FC = () => {
     const name = useName();
     const setName = useSetName();
     const navigate = useNavigate();
     const inputRef = useRef<HTMLInputElement>(null);
+    const {startGame, isStartSuccess} = useStartGame();
 
     const navigateStartGame = useCallback(() => {
         navigate("/game");
@@ -19,15 +21,22 @@ const StartPage: FC = () => {
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === "Enter") {
-            navigateStartGame();
+            startGame(name);
         }
     };
+
+    function onStartGame() {
+        startGame(name);
+    }
 
     useEffect(() => {
         if (inputRef.current) {
             inputRef.current.focus();
         }
-    }, []);
+        if (isStartSuccess) {
+            navigateStartGame();
+        }
+    }, [isStartSuccess]);
 
     return (
         <Container>
@@ -42,7 +51,7 @@ const StartPage: FC = () => {
                     placeholder="Enter your name"
                     style={{padding: '10px', width: '400px', fontSize: '16px'}}
                 />
-                <ButtonStyle onClick={navigateStartGame}>
+                <ButtonStyle onClick={onStartGame}>
                     Start New Game
                 </ButtonStyle>
             </InputRowContainer>

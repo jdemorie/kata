@@ -1,5 +1,9 @@
 package com.demo.server.controller;
 
+import com.demo.kata.bowling.BowlingArea;
+import com.demo.kata.bowling.BowlingGame;
+import com.demo.kata.bowling.BowlingLine;
+import com.demo.kata.bowling.BowlingTurn;
 import com.demo.server.api.DefaultApi;
 import com.demo.server.model.PlayerBean;
 import com.demo.server.model.ResponseBean;
@@ -16,6 +20,7 @@ import java.util.List;
 
 @Controller("/server")
 public class BowlingApplicationController implements DefaultApi {
+  private BowlingGame bowlingGame;
 
   @Get("/score")
   @Produces(MediaType.APPLICATION_JSON)
@@ -23,18 +28,14 @@ public class BowlingApplicationController implements DefaultApi {
   @Override
   public Mono<@NotNull List<@Valid ScoreBean>> getScore() {
     List<ScoreBean> scoreBeanList = new ArrayList<>();
+    BowlingLine currentLine = bowlingGame.getCurrentLine();
+    List<BowlingTurn> turns = currentLine.getTurns();
+    List<TurnBean> turnBeans = new ArrayList<>();
+    for (BowlingTurn turn : turns) {
+      turnBeans.add(new TurnBean(turn.getFirstDownPins(), turn.getSecondDownPins()));
+    }
     ScoreBean scoreBean = new ScoreBean("Fake player", 0);
-    scoreBean.turns(List.of(new TurnBean(0, 0),
-                            new TurnBean(0, 0),
-                            new TurnBean(0, 0),
-                            new TurnBean(0, 0),
-                            new TurnBean(0, 0),
-                            new TurnBean(0, 0),
-                            new TurnBean(0, 0),
-                            new TurnBean(0, 0),
-                            new TurnBean(0, 0),
-                            new TurnBean(0, 0)
-    ));
+    scoreBean.turns(turnBeans);
     scoreBeanList.add(scoreBean);
     return Mono.just(scoreBeanList);
   }
@@ -52,6 +53,8 @@ public class BowlingApplicationController implements DefaultApi {
   @Consumes(MediaType.APPLICATION_JSON)
   @Override
   public Mono<@Valid ResponseBean> start(List<@Valid PlayerBean> playerBeans) {
+    BowlingArea bowlingArea = new BowlingArea(new MemoryBowlingLineReader(), new MemoryBowlingLineWriter());
+    bowlingGame = bowlingArea.start();
     return Mono.just(new ResponseBean("Game started"));
   }
 }
