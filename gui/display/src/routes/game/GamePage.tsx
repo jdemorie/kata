@@ -14,22 +14,22 @@ const GamePage = () => {
     const [isLaunching, setIsLaunching] = useState(false);
     const query = useGetScoreQuery();
     const {playGame, isPlaySuccess, isPlayStart} = usePlayGame();
+    
     const data: Array<Record<string, string>> | undefined = useMemo(() => {
         return query.data?.map(scoreBean => {
-            return {
-                Name: scoreBean.name,
-                "Turn 1": "",
-                "Turn 2": "",
-                "Turn 3": "",
-                "Turn 4": "",
-                "Turn 5": "",
-                "Turn 6": "",
-                "Turn 7": "",
-                "Turn 8": "",
-                "Turn 9": "",
-                "Turn 10": "",
-                Score: scoreBean.score.toString(),
+            const turns = scoreBean.turns;
+            const turnData: Record<string, string> = {};
+            if (turns === undefined) {
+                return turnData;
             }
+            turnData["Name"] = scoreBean.name;
+            for (let i = 0; i < turns.length; i++) {
+                const firstAttempt = turns[i].firstAttempt;
+                const secondAttempt = turns[i].secondAttempt;
+                turnData[`Turn ${i + 1}`] = firstAttempt === undefined ? "0" : firstAttempt.toString() + secondAttempt === undefined ? "0" : secondAttempt.toString();
+            }
+            turnData["Score"] = scoreBean.score.toString();
+            return turnData;
         });
     }, [query]);
 

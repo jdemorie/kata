@@ -1,13 +1,14 @@
 package com.demo.server.controller;
 
 import com.demo.server.model.PlayerBean;
+import com.demo.server.model.ScoreBean;
+import io.micronaut.core.type.Argument;
 import io.micronaut.http.HttpRequest;
 import io.micronaut.http.client.HttpClient;
 import io.micronaut.runtime.EmbeddedApplication;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -34,11 +35,11 @@ public class BowlingApplicationScenario {
     return this;
   }
 
-  public BowlingApplicationScenario thenTheScoreShouldBe(String expectedScore) {
+  public BowlingApplicationScenario thenTheScoreShouldBe(List<ScoreBean> expectedScore) {
     HttpRequest<?> request = HttpRequest.GET("/server/score");
-    response = client.toBlocking().retrieve(request, String.class);
+    List<ScoreBean> response = client.toBlocking().retrieve(request, Argument.listOf(ScoreBean.class));
     assertNotNull(response);
-    assertEquals(expectedScore, response);
+    assertArrayEquals(expectedScore.toArray(), response.toArray());
     return this;
   }
 }

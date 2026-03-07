@@ -18,8 +18,8 @@ jest.mock("../../../openapi/enhancedApi", () => ({
 describe("GamePage Component", () => {
     it("renders bowling game page", async () => {
         mockGetScore([
-            {name: "Player 1", score: 100},
-            {name: "Player 2", score: 150},
+            {name: "Player 1", turns: [{firstAttempt: 0, secondAttempt: 0}], score: 100},
+            {name: "Player 2", turns: [{firstAttempt: 0, secondAttempt: 0}], score: 150},
         ]);
         mockPlay();
         render(

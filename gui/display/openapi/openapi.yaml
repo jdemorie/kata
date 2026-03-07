@@ -93,12 +93,28 @@ components:
         name:
           type: string
           description: "player name"
+        turns:
+          type: array
+          items:
+            $ref: "#/components/schemas/TurnBean"
         score:
           type: integer
           description: "player score"
       required:
         - name
         - score
+    TurnBean:
+        type: object
+        properties:
+          firstAttempt:
+            type: integer
+            description: "number of pins knocked down on the first attempt"
+          secondAttempt:
+            type: integer
+            description: "number of pins knocked down on the second attempt"
+        required:
+            - firstAttempt
+            - secondAttempt
     ResponseBean:
       type: object
       properties:

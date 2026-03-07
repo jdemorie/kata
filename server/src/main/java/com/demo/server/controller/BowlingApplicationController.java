@@ -4,6 +4,7 @@ import com.demo.server.api.DefaultApi;
 import com.demo.server.model.PlayerBean;
 import com.demo.server.model.ResponseBean;
 import com.demo.server.model.ScoreBean;
+import com.demo.server.model.TurnBean;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.*;
 import jakarta.validation.Valid;
@@ -22,7 +23,19 @@ public class BowlingApplicationController implements DefaultApi {
   @Override
   public Mono<@NotNull List<@Valid ScoreBean>> getScore() {
     List<ScoreBean> scoreBeanList = new ArrayList<>();
-    scoreBeanList.add(new ScoreBean("", 0));
+    ScoreBean scoreBean = new ScoreBean("Fake player", 0);
+    scoreBean.turns(List.of(new TurnBean(0, 0),
+                            new TurnBean(0, 0),
+                            new TurnBean(0, 0),
+                            new TurnBean(0, 0),
+                            new TurnBean(0, 0),
+                            new TurnBean(0, 0),
+                            new TurnBean(0, 0),
+                            new TurnBean(0, 0),
+                            new TurnBean(0, 0),
+                            new TurnBean(0, 0)
+    ));
+    scoreBeanList.add(scoreBean);
     return Mono.just(scoreBeanList);
   }
 

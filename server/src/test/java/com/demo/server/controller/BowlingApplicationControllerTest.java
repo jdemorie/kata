@@ -1,11 +1,15 @@
 package com.demo.server.controller;
 
+import com.demo.server.model.ScoreBean;
+import com.demo.server.model.TurnBean;
 import io.micronaut.http.client.HttpClient;
 import io.micronaut.http.client.annotation.Client;
 import io.micronaut.runtime.EmbeddedApplication;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import jakarta.inject.Inject;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 @MicronautTest
 public class BowlingApplicationControllerTest {
@@ -17,9 +21,21 @@ public class BowlingApplicationControllerTest {
 
   @Test
   void givenABowlingAreaWhenIStartGameThenTheScoreShouldBe() {
+    List<ScoreBean> expectedScore = List.of(new ScoreBean("Fake player", 0).turns(List.of(
+        new TurnBean(0, 0),
+        new TurnBean(0, 0),
+        new TurnBean(0, 0),
+        new TurnBean(0, 0),
+        new TurnBean(0, 0),
+        new TurnBean(0, 0),
+        new TurnBean(0, 0),
+        new TurnBean(0, 0),
+        new TurnBean(0, 0),
+        new TurnBean(0, 0)
+    )));
     BowlingApplicationScenario scenario = new BowlingApplicationScenario(client, application);
     scenario.givenABowlingServer()
         .whenIStartGame("John")
-        .thenTheScoreShouldBe("[{\"score\":0}]");
+        .thenTheScoreShouldBe(expectedScore);
   }
 }
