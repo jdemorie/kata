@@ -13,7 +13,6 @@ export const usePlayGame = () => {
                     name: name,
                 },
             })
-                .unwrap()
                 .then(
                     (_) => {
                         setPlaySuccess(true);

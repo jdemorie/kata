@@ -8,7 +8,7 @@ const Launching = () => {
                 width: "50%",
                 height: "50%",
                 objectFit: "contain",
-            }}/>
+            }} data-testid="launching-gif"/>
         </CenterContainer>
     );
 }

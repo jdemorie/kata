@@ -4,15 +4,15 @@ import {MemoryRouter} from "react-router";
 import {Provider} from "react-redux";
 import {bowlingStore} from "../../../store/bowlingStore";
 import GamePage from "../GamePage";
-import {useGetScoreQuery} from "../../../openapi/enhancedApi";
+import {useGetScoreQuery, usePlayMutation} from "../../../openapi/enhancedApi";
 import {ScoreBean} from "../../../openapi/api";
 
 // Mock du module
 jest.mock("../../../openapi/enhancedApi", () => ({
     ...jest.requireActual("../../../openapi/enhancedApi"),
     useGetScoreQuery: jest.fn(),
-    usePlayMutation: jest.fn().mockReturnValue([jest.fn()]),
-    useStartMutation: jest.fn().mockReturnValue([jest.fn()]),
+    usePlayMutation: jest.fn(),
+    useStartMutation: jest.fn(),
 }));
 
 describe("GamePage Component", () => {
@@ -21,6 +21,7 @@ describe("GamePage Component", () => {
             {name: "Player 1", score: 100},
             {name: "Player 2", score: 150},
         ]);
+        mockPlay();
         render(
             <Provider store={bowlingStore}>
                 <MemoryRouter>
@@ -35,6 +36,25 @@ describe("GamePage Component", () => {
         expect(within(scoreGrid).getByText("Player 1")).toBeInTheDocument();
         expect(within(scoreGrid).getByText("Player 2")).toBeInTheDocument();
     });
+
+    it("should be able to throw ball", async () => {
+        mockGetScore([
+            {name: "Player 1", score: 0},
+        ]);
+        mockPlay();
+        render(
+            <Provider store={bowlingStore}>
+                <MemoryRouter>
+                    <GamePage/>
+                </MemoryRouter>
+            </Provider>
+        );
+        const button = screen.getByText("Throw Ball");
+        expect(button).toBeInTheDocument();
+        button.click();
+        const launchingElement = await screen.findByTestId("launching-gif");
+        expect(launchingElement).toBeInTheDocument();
+    });
 });
 
 function mockGetScore(data: ScoreBean[]) {
@@ -44,3 +64,22 @@ function mockGetScore(data: ScoreBean[]) {
         isError: false,
     });
 }
+
+function mockPlay() {
+    const mockQuery = {
+        data: null,
+        isLoading: false,
+        isSuccess: false,
+        isError: false,
+    };
+    const mockPlayMutation = jest.fn().mockImplementation(() =>
+        Promise.resolve({
+            data: [],
+        }),
+    );
+    (usePlayMutation as jest.Mock).mockReturnValue([
+        mockPlayMutation,
+        mockQuery,
+    ]);
+}
+
