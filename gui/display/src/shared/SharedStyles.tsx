@@ -68,3 +68,9 @@ export const StyledLabel = styled(motion.label)`
     display: block;
     margin: auto;
 `
+
+export const StyledInput = styled(motion.input)`
+    padding: 10px;
+    font-size: 16px;
+    width: 400px;
+`;

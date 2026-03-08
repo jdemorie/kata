@@ -50,21 +50,15 @@ const GamePage = () => {
                 {isLaunching ? (
                     <Launching/>
                 ) : (
-                    <Container animate={{
-                        scale: 1,
-                        transition: {duration: 2}
-                    }}>
+                    <Container>
                         <Gif src="/pins.jpg" alt="Bowling GIF"/>
-                        <InputColumnContainer animate={{
-                            scale: 1,
-                            transition: {duration: 2}
-                        }}>
+                        <InputColumnContainer>
                             <h2 style={{color: "white"}}>Bowling score</h2>
                             <Grid headers={headers} data={data} testId="grid"/>
-                            <StyledButton initial={{scale: 0}} animate={{scale: 1, transition: {duration: 1}}} onClick={throwBall}>
+                            <StyledButton onClick={throwBall}>
                                 Throw Ball
                             </StyledButton>
-                            <StyledLabel initial={{scale: 0}} animate={{scale: 1, transition: {duration: 1}}}>
+                            <StyledLabel>
                                 Pins Down: {getPinsDown}
                             </StyledLabel>
                         </InputColumnContainer>

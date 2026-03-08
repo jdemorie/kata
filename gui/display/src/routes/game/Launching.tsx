@@ -3,12 +3,9 @@ import React from "react";
 
 const Launching = () => {
     return (
-        <Container animate={{
-            scale: 1,
-            transition: {duration: 2}
-        }}>
+        <Container>
             <Gif src="/pins.jpg" alt="Bowling GIF"/>
-            <InputColumnContainer animate={{
+            <InputColumnContainer initial={{scale: 0}} animate={{
                 scale: 1,
                 transition: {duration: 2}
             }}>

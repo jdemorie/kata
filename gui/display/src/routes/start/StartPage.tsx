@@ -1,5 +1,5 @@
 import React, {FC, useCallback, useEffect, useRef} from "react";
-import {Container, Gif, InputRowContainer, StyledButton} from "../../shared/SharedStyles";
+import {Container, Gif, InputRowContainer, StyledButton, StyledInput} from "../../shared/SharedStyles";
 import {useNavigate} from "react-router";
 import {useName, useSetName} from "../../store/playerSlice";
 import {useStartGame} from "./useStartGame";
@@ -39,23 +39,23 @@ const StartPage: FC = () => {
     }, [isStartSuccess]);
 
     return (
-        <Container animate={{
+        <Container initial={{scale: 0}} animate={{
             scale: 1,
-            transition: {duration: 2}
+            transition: {duration: 1}
         }}>
             <Gif src="/bowling.jpg" alt="Bowling GIF"/>
             <InputRowContainer animate={{
                 scale: 1,
                 transition: {duration: 2}
             }}>
-                <input
+                <StyledInput
                     ref={inputRef}
                     type="text"
                     value={name}
                     onChange={handleNameChange}
                     onKeyDown={handleKeyDown}
                     placeholder="Enter your name"
-                    style={{padding: '10px', width: '400px', fontSize: '16px'}}
+                    initial={{scale: 0}} animate={{scale: 1, transition: {duration: 1}}}
                 />
                 <StyledButton initial={{scale: 0}} animate={{scale: 1, transition: {duration: 1}}} onClick={onStartGame}>
                     Start New Game
