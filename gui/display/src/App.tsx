@@ -3,6 +3,7 @@ import {createBrowserRouter, Navigate, Outlet, RouterProvider} from "react-route
 import StartPage from "./routes/start/StartPage";
 import ErrorElement from "./shared/ErrorElement";
 import GamePage from "./routes/game/GamePage";
+import {motion} from "motion/react"
 
 const router = createBrowserRouter([
     {
@@ -33,9 +34,13 @@ const router = createBrowserRouter([
 
 function App() {
     return (
-        <div className="App">
+        <motion.div
+            animate={{
+                scale: 1,
+                transition: {duration: 2}
+            }} className="App">
             <RouterProvider router={router}/>
-        </div>
+        </motion.div>
     );
 }
 

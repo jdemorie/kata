@@ -1,5 +1,5 @@
 import React, {useEffect, useMemo, useState} from "react";
-import {ButtonStyle, Container, Gif, InputColumnContainer} from "../../shared/SharedStyles";
+import {StyledButton, Container, Gif, InputColumnContainer, StyledLabel} from "../../shared/SharedStyles";
 import {useName} from "../../store/playerSlice";
 import useColumnDefs from "./useColumnDefs";
 import Launching from "./Launching";
@@ -7,6 +7,7 @@ import Grid from "../../shared/Grid";
 import {useGetScoreQuery} from "../../openapi/enhancedApi";
 import AwaitQuery from "../../shared/AwaitQuery";
 import {usePlayGame} from "./usePlayGame";
+import {motion} from "motion/react";
 
 const GamePage = () => {
     const name = useName();
@@ -45,25 +46,31 @@ const GamePage = () => {
 
     return (
         <AwaitQuery query={query}>
-            <div style={{cursor: isLaunching ? "wait" : "default"}}>
+            <motion.div style={{cursor: isLaunching ? "wait" : "default"}}>
                 {isLaunching ? (
                     <Launching/>
                 ) : (
-                    <Container>
+                    <Container animate={{
+                        scale: 1,
+                        transition: {duration: 2}
+                    }}>
                         <Gif src="/pins.jpg" alt="Bowling GIF"/>
-                        <InputColumnContainer>
+                        <InputColumnContainer animate={{
+                            scale: 1,
+                            transition: {duration: 2}
+                        }}>
                             <h2 style={{color: "white"}}>Bowling score</h2>
                             <Grid headers={headers} data={data} testId="grid"/>
-                            <ButtonStyle onClick={throwBall}>
+                            <StyledButton initial={{scale: 0}} animate={{scale: 1, transition: {duration: 1}}} onClick={throwBall}>
                                 Throw Ball
-                            </ButtonStyle>
-                            <label style={{ color: "white", marginLeft: "10px" }}>
+                            </StyledButton>
+                            <StyledLabel initial={{scale: 0}} animate={{scale: 1, transition: {duration: 1}}}>
                                 Pins Down: {getPinsDown}
-                            </label>
+                            </StyledLabel>
                         </InputColumnContainer>
                     </Container>
                 )}
-            </div>
+            </motion.div>
         </AwaitQuery>
     );
 }

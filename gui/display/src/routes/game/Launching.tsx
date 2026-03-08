@@ -1,26 +1,27 @@
-import {Container, Gif, InputColumnContainer} from "../../shared/SharedStyles";
+import {Container, Gif, GifLaunching, InputColumnContainer, StyledLabel} from "../../shared/SharedStyles";
 import React from "react";
 
 const Launching = () => {
     return (
-        <Container>
+        <Container animate={{
+            scale: 1,
+            transition: {duration: 2}
+        }}>
             <Gif src="/pins.jpg" alt="Bowling GIF"/>
-            <InputColumnContainer>
-                <Gif src="/strike.jpg" alt="Launch GIF" style={{
-                    width: "50%",
-                    height: "50%",
-                    objectFit: "contain",
-                    display: "block",
-                    margin: "auto"
+            <InputColumnContainer animate={{
+                scale: 1,
+                transition: {duration: 2}
+            }}>
+                <GifLaunching src="/strike.jpg" alt="Launch GIF" initial={{scale: 0}} animate={{
+                    scale: 1,
+                    transition: {duration: 1}
                 }} data-testid="launching-gif"/>
-                <label style={{
-                    color: "white",
-                    marginLeft: "10px",
-                    display: "block",
-                    margin: "auto"
+                <StyledLabel initial={{scale: 0}} animate={{
+                    scale: 1,
+                    transition: {duration: 1}
                 }}>
                     Launching ball...
-                </label>
+                </StyledLabel>
             </InputColumnContainer>
         </Container>
     );
