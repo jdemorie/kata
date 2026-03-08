@@ -69,6 +69,13 @@ export const StyledLabel = styled(motion.label)`
     margin: auto;
 `
 
+export const LabelLaunching = styled(motion.label)`
+    color: white;
+    margin: auto;
+    font-size: 24px;
+    font-weight: bold;
+`;
+
 export const StyledInput = styled(motion.input)`
     padding: 10px;
     font-size: 16px;
