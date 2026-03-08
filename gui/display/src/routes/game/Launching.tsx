@@ -4,7 +4,7 @@ import React from "react";
 const Launching = () => {
     return (
         <CenterContainer>
-            <Gif src="/launch.gif" alt="Launch GIF" style={{
+            <Gif src="/strike.jpg" alt="Launch GIF" style={{
                 width: "50%",
                 height: "50%",
                 objectFit: "contain",

@@ -5,6 +5,7 @@ export const usePlayGame = () => {
     const [play] = usePlayMutation();
     const [isPlayStart, setPlayStart] = useState(false);
     const [isPlaySuccess, setPlaySuccess] = useState(false);
+    const [getPinsDown, setPinsDown] = useState(0);
 
     const playGame = useCallback((name: string) => {
             setPlayStart(true);
@@ -14,11 +15,13 @@ export const usePlayGame = () => {
                 },
             })
                 .then(
-                    (_) => {
+                    (response) => {
                         setPlaySuccess(true);
+                        setPinsDown(response.data === undefined ? 0 : response.data.pinsDown);
                     },
                     (reason) => {
                         setPlaySuccess(false);
+                        setPinsDown(0);
                     },
                 )
                 .finally(() => {
@@ -27,5 +30,5 @@ export const usePlayGame = () => {
         },
         [play],
     );
-    return {playGame, isPlaySuccess, isPlayStart};
+    return {playGame, isPlaySuccess, isPlayStart, getPinsDown};
 };

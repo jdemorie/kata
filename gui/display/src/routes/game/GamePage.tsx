@@ -13,7 +13,7 @@ const GamePage = () => {
     const headers = useColumnDefs();
     const [isLaunching, setIsLaunching] = useState(false);
     const query = useGetScoreQuery();
-    const {playGame, isPlayStart} = usePlayGame();
+    const {playGame, isPlayStart, getPinsDown} = usePlayGame();
 
     const data: Array<Record<string, string>> | undefined = useMemo(() => {
         return query.data?.map(scoreBean => {
@@ -45,18 +45,21 @@ const GamePage = () => {
 
     return (
         <AwaitQuery query={query}>
-            <div>
+            <div style={{cursor: isLaunching ? "wait" : "default"}}>
                 {isLaunching ? (
                     <Launching/>
                 ) : (
                     <Container>
-                        <Gif src="/strike.jpg" alt="Bowling GIF"/>
+                        <Gif src="/pins.jpg" alt="Bowling GIF"/>
                         <InputColumnContainer>
                             <h2 style={{color: "white"}}>Bowling score</h2>
                             <Grid headers={headers} data={data} testId="grid"/>
                             <ButtonStyle onClick={throwBall}>
                                 Throw Ball
                             </ButtonStyle>
+                            <label style={{ color: "white", marginLeft: "10px" }}>
+                                Pins Down: {getPinsDown}
+                            </label>
                         </InputColumnContainer>
                     </Container>
                 )}

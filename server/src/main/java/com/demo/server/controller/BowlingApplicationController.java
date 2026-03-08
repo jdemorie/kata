@@ -1,18 +1,18 @@
 package com.demo.server.controller;
 
-import com.demo.kata.bowling.*;
+import com.demo.kata.bowling.BowlingArea;
+import com.demo.kata.bowling.BowlingGame;
+import com.demo.kata.bowling.BowlingLineOutputFormatter;
+import com.demo.kata.bowling.BowlingScore;
 import com.demo.server.api.DefaultApi;
-import com.demo.server.model.PlayerBean;
-import com.demo.server.model.ResponseBean;
-import com.demo.server.model.ScoreBean;
-import com.demo.server.model.TurnBean;
+import com.demo.server.model.*;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.*;
-import io.micronaut.http.annotation.Error;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import reactor.core.publisher.Mono;
 
+import java.math.BigDecimal;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
@@ -48,12 +48,11 @@ public class BowlingApplicationController implements DefaultApi {
   @Produces(MediaType.APPLICATION_JSON)
   @Consumes(MediaType.APPLICATION_JSON)
   @Override
-  public Mono<@Valid ResponseBean> play(@Body @NotNull @Valid PlayerBean playerBean) {
+  public Mono<@Valid ResultBean> play(@Body @NotNull @Valid PlayerBean playerBean) {
     int remainingPins = bowlingGame.getRemainingPins(playerBean.getName());
     int pinsDowns = new Random().nextInt(remainingPins) + 1;
     bowlingGame.pinsDown(playerBean.getName(), pinsDowns);
-    return Mono.delay(Duration.ofSeconds(3))
-        .then(Mono.just(new ResponseBean("Player " + playerBean.getName() + "  hits " + pinsDowns + " pins")));
+    return Mono.delay(Duration.ofSeconds(3)).then(Mono.just(new ResultBean(BigDecimal.valueOf(pinsDowns))));
   }
 
   @Post("/start")
