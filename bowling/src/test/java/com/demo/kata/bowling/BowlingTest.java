@@ -23,7 +23,7 @@ public class BowlingTest {
   }
 
   @Test
-  void givenABowlingAreaWhenIDown4PinsThenTheScoreShouldBe4() {
+  void givenABowlingAreaWhenIDown4PinsThenTheScoreShouldBe4() throws Exception {
     BowlingScenario bowlingScenario = new BowlingScenario();
     bowlingScenario.givenABowlingArea()
         .whenIStartAGame("player")
@@ -43,7 +43,7 @@ public class BowlingTest {
   }
 
   @Test
-  void givenABowlingAreaWhenIDown4PinsThen5PinsThenTheScoreShouldBe9() {
+  void givenABowlingAreaWhenIDown4PinsThen5PinsThenTheScoreShouldBe9() throws Exception {
     BowlingScenario bowlingScenario = new BowlingScenario();
     bowlingScenario.givenABowlingArea()
         .whenIStartAGame("player")
@@ -64,7 +64,7 @@ public class BowlingTest {
   }
 
   @Test
-  void givenABowlingAreaWhenIDown3PinsOnSecondTurnThenTheScoreShouldBe9() {
+  void givenABowlingAreaWhenIDown3PinsOnSecondTurnThenTheScoreShouldBe9() throws Exception {
     BowlingScenario bowlingScenario = new BowlingScenario();
     bowlingScenario.givenABowlingArea()
         .whenIStartAGame("player")
@@ -86,7 +86,23 @@ public class BowlingTest {
   }
 
   @Test
-  void givenABowlingAreaWhenIMissedPinsOnSecondTurnThenTheScoreShouldBe9() {
+  void givenABowlingAreaWhenIDownSomePinsThenTheRemainingPinsShouldBe() throws Exception {
+    BowlingScenario bowlingScenario = new BowlingScenario();
+    bowlingScenario.givenABowlingArea()
+        .whenIStartAGame("player")
+        .thenTheRemainingPinsShouldBe("player", 10)
+        .whenIDownPins("player", 4)
+        .thenTheRemainingPinsShouldBe("player", 6)
+        .whenIDownPins("player", 5)
+        .thenTheRemainingPinsShouldBe("player", 10)
+        .whenIDownPins("player", 10)
+        .thenTheRemainingPinsShouldBe("player", 10)
+        .thenTheOutputLineShouldBe("player", "45 X 00 00 00 00 00 00 00 00")
+        .thenTheScoreShouldBe("player", 19);
+  }
+
+  @Test
+  void givenABowlingAreaWhenIMissedPinsOnSecondTurnThenTheScoreShouldBe9() throws Exception {
     BowlingScenario bowlingScenario = new BowlingScenario();
     bowlingScenario.givenABowlingArea()
         .whenIStartAGame("player")
@@ -109,7 +125,7 @@ public class BowlingTest {
 
 
   @Test
-  void givenABowlingAreaWhenIMissedAllSecondPinsThenTheScoreShouldBe9() {
+  void givenABowlingAreaWhenIMissedAllSecondPinsThenTheScoreShouldBe9() throws Exception {
     BowlingScenario bowlingScenario = new BowlingScenario();
     bowlingScenario.givenABowlingArea()
         .whenIStartAGame("player")
@@ -148,7 +164,7 @@ public class BowlingTest {
   }
 
   @Test
-  void givenABowlingAreaWhenIDown4PinsThen6PinsThenTheScoreShouldBeSpare() {
+  void givenABowlingAreaWhenIDown4PinsThen6PinsThenTheScoreShouldBeSpare() throws Exception {
     BowlingScenario bowlingScenario = new BowlingScenario();
     bowlingScenario.givenABowlingArea()
         .whenIStartAGame("player")
@@ -169,7 +185,7 @@ public class BowlingTest {
   }
 
   @Test
-  void givenABowlingAreaWhenIMakeSpareAndDown5PinsAfterThenTheScoreShouldBe() {
+  void givenABowlingAreaWhenIMakeSpareAndDown5PinsAfterThenTheScoreShouldBe() throws Exception {
     BowlingScenario bowlingScenario = new BowlingScenario();
     bowlingScenario.givenABowlingArea()
         .whenIStartAGame("player")
@@ -191,7 +207,7 @@ public class BowlingTest {
   }
 
   @Test
-  void givenABowlingAreaWhenIMakeSpareAndDown5And3PinsAfterThenTheScoreShouldBe() {
+  void givenABowlingAreaWhenIMakeSpareAndDown5And3PinsAfterThenTheScoreShouldBe() throws Exception {
     BowlingScenario bowlingScenario = new BowlingScenario();
     bowlingScenario.givenABowlingArea()
         .whenIStartAGame("player")
@@ -214,7 +230,7 @@ public class BowlingTest {
   }
 
   @Test
-  void givenABowlingAreaWhenIMakeSpareAndDoAnotherSpareAfterThenTheScoreShouldBe() {
+  void givenABowlingAreaWhenIMakeSpareAndDoAnotherSpareAfterThenTheScoreShouldBe() throws Exception {
     BowlingScenario bowlingScenario = new BowlingScenario();
     bowlingScenario.givenABowlingArea()
         .whenIStartAGame("player")
@@ -237,7 +253,7 @@ public class BowlingTest {
   }
 
   @Test
-  void givenABowlingAreaWhenIMakeSpareForAllTurnsThenTheScoreShouldBe() {
+  void givenABowlingAreaWhenIMakeSpareForAllTurnsThenTheScoreShouldBe() throws Exception {
     BowlingScenario bowlingScenario = new BowlingScenario();
     bowlingScenario.givenABowlingArea()
         .whenIStartAGame("player")
@@ -261,7 +277,9 @@ public class BowlingTest {
         .whenIDownPins("player", 5)
         .whenIDownPins("player", 5)
         .whenIDownPins("player", 5)
+        .thenTheGameIsNotOver("player")
         .whenIDownPins("player", 5)
+        .thenTheGameIsOver("player")
         .thenTheTurnShouldBe("player", new BowlingLine(new BowlingTurn(5, 5),
                                                        new BowlingTurn(5, 5),
                                                        new BowlingTurn(5, 5),
@@ -278,7 +296,7 @@ public class BowlingTest {
   }
 
   @Test
-  void givenABowlingAreaWhenIMakeTwoConsecutiveSparesAndDown4PinsAfterThenTheScoreShouldBe() {
+  void givenABowlingAreaWhenIMakeTwoConsecutiveSparesAndDown4PinsAfterThenTheScoreShouldBe() throws Exception {
     BowlingScenario bowlingScenario = new BowlingScenario();
     bowlingScenario.givenABowlingArea()
         .whenIStartAGame("player")
@@ -302,7 +320,7 @@ public class BowlingTest {
   }
 
   @Test
-  void givenABowlingAreaWhenIDoAStrikeThenTheScoreShouldBe() {
+  void givenABowlingAreaWhenIDoAStrikeThenTheScoreShouldBe() throws Exception {
     BowlingScenario bowlingScenario = new BowlingScenario();
     bowlingScenario.givenABowlingArea()
         .whenIStartAGame("player")
@@ -322,7 +340,7 @@ public class BowlingTest {
   }
 
   @Test
-  void givenABowlingAreaWhenIDoAStrikeAfterPinsDownThenTheScoreShouldBe() {
+  void givenABowlingAreaWhenIDoAStrikeAfterPinsDownThenTheScoreShouldBe() throws Exception {
     BowlingScenario bowlingScenario = new BowlingScenario();
     bowlingScenario.givenABowlingArea()
         .whenIStartAGame("player")
@@ -346,7 +364,7 @@ public class BowlingTest {
   }
 
   @Test
-  void givenABowlingAreaWhenIDoAStrikeAndIDown4PinsThenTheScoreShouldBe() {
+  void givenABowlingAreaWhenIDoAStrikeAndIDown4PinsThenTheScoreShouldBe() throws Exception {
     BowlingScenario bowlingScenario = new BowlingScenario();
     bowlingScenario.givenABowlingArea()
         .whenIStartAGame("player")
@@ -367,7 +385,7 @@ public class BowlingTest {
   }
 
   @Test
-  void givenABowlingAreaWhenIDoAStrikeAndIDown4And2PinsThenTheScoreShouldBe() {
+  void givenABowlingAreaWhenIDoAStrikeAndIDown4And2PinsThenTheScoreShouldBe() throws Exception {
     BowlingScenario bowlingScenario = new BowlingScenario();
     bowlingScenario.givenABowlingArea()
         .whenIStartAGame("player")
@@ -389,7 +407,7 @@ public class BowlingTest {
   }
 
   @Test
-  void givenABowlingAreaWhenIDoAStrikeAndIDownPinsOnNext2TurnsThenTheScoreShouldBe() {
+  void givenABowlingAreaWhenIDoAStrikeAndIDownPinsOnNext2TurnsThenTheScoreShouldBe() throws Exception {
     BowlingScenario bowlingScenario = new BowlingScenario();
     bowlingScenario.givenABowlingArea()
         .whenIStartAGame("player")
@@ -413,7 +431,7 @@ public class BowlingTest {
   }
 
   @Test
-  void givenABowlingAreaWhenIDoTwoConsecutiveStrikesThenTheScoreShouldBe() {
+  void givenABowlingAreaWhenIDoTwoConsecutiveStrikesThenTheScoreShouldBe() throws Exception {
     BowlingScenario bowlingScenario = new BowlingScenario();
     bowlingScenario.givenABowlingArea()
         .whenIStartAGame("player")
@@ -434,7 +452,7 @@ public class BowlingTest {
   }
 
   @Test
-  void givenABowlingAreaWhenIDoTwoConsecutiveStrikesAndIDownPinsOnNext2TurnsThenTheScoreShouldBe() {
+  void givenABowlingAreaWhenIDoTwoConsecutiveStrikesAndIDownPinsOnNext2TurnsThenTheScoreShouldBe() throws Exception {
     BowlingScenario bowlingScenario = new BowlingScenario();
     bowlingScenario.givenABowlingArea()
         .whenIStartAGame("player")
@@ -459,7 +477,7 @@ public class BowlingTest {
   }
 
   @Test
-  void givenABowlingAreaWhenIDoThreeConsecutiveStrikesAndIDownPinsOnNext2TurnsThenTheScoreShouldBe() {
+  void givenABowlingAreaWhenIDoThreeConsecutiveStrikesAndIDownPinsOnNext2TurnsThenTheScoreShouldBe() throws Exception {
     BowlingScenario bowlingScenario = new BowlingScenario();
     bowlingScenario.givenABowlingArea()
         .whenIStartAGame("player")
@@ -485,7 +503,7 @@ public class BowlingTest {
   }
 
   @Test
-  void givenABowlingAreaWhenIDoFourConsecutiveStrikesAndIDownPinsOnNext2TurnsThenTheScoreShouldBe() {
+  void givenABowlingAreaWhenIDoFourConsecutiveStrikesAndIDownPinsOnNext2TurnsThenTheScoreShouldBe() throws Exception {
     BowlingScenario bowlingScenario = new BowlingScenario();
     bowlingScenario.givenABowlingArea()
         .whenIStartAGame("player")
@@ -512,7 +530,7 @@ public class BowlingTest {
   }
 
   @Test
-  void givenABowlingAreaWhenIDoNineConsecutiveStrikesThenTheScoreShouldBe() {
+  void givenABowlingAreaWhenIDoNineConsecutiveStrikesThenTheScoreShouldBe() throws Exception {
     BowlingScenario bowlingScenario = new BowlingScenario();
     bowlingScenario.givenABowlingArea()
         .whenIStartAGame("player")
@@ -524,6 +542,7 @@ public class BowlingTest {
         .whenIDownPins("player", 10)
         .whenIDownPins("player", 10)
         .whenIDownPins("player", 10)
+        .thenTheGameIsNotOver("player")
         .thenTheTurnShouldBe("player", new BowlingLine(new BowlingTurn(10, 0),
                                                        new BowlingTurn(10, 0),
                                                        new BowlingTurn(10, 0),
@@ -539,7 +558,7 @@ public class BowlingTest {
   }
 
   @Test
-  void givenABowlingAreaWhenIDoTenConsecutiveStrikesThenTheScoreShouldBe() {
+  void givenABowlingAreaWhenIDoTenConsecutiveStrikesThenTheScoreShouldBe() throws Exception {
     BowlingScenario bowlingScenario = new BowlingScenario();
     bowlingScenario.givenABowlingArea()
         .whenIStartAGame("player")
@@ -553,6 +572,7 @@ public class BowlingTest {
         .whenIDownPins("player", 10)
         .whenIDownPins("player", 10)
         .whenIDownPins("player", 10)
+        .thenTheGameIsNotOver("player")
         .thenTheTurnShouldBe("player", new BowlingLine(new BowlingTurn(10, 0),
                                                        new BowlingTurn(10, 0),
                                                        new BowlingTurn(10, 0),
@@ -568,7 +588,7 @@ public class BowlingTest {
   }
 
   @Test
-  void givenABowlingAreaWhenIDoAllStrikesThenTheScoreShouldBe() {
+  void givenABowlingAreaWhenIDoAllStrikesThenTheScoreShouldBe() throws Exception {
     BowlingScenario bowlingScenario = new BowlingScenario();
     bowlingScenario.givenABowlingArea()
         .whenIStartAGame("player")
@@ -584,6 +604,7 @@ public class BowlingTest {
         .whenIDownPins("player", 10)
         .whenIDownPins("player", 10)
         .whenIDownPins("player", 10)
+        .thenTheGameIsOver("player")
         .thenTheTurnShouldBe("player", new BowlingLine(new BowlingTurn(10, 0),
                                                        new BowlingTurn(10, 0),
                                                        new BowlingTurn(10, 0),
@@ -598,5 +619,26 @@ public class BowlingTest {
                                                        new BowlingTurn(10, 0)))
         .thenTheOutputLineShouldBe("player", "X X X X X X X X X X X X")
         .thenTheScoreShouldBe("player", 300);
+  }
+
+  @Test
+  void givenABowlingAreaWhenIDoAllTurnwWithoutStrikeOrSpareForLatestThenTheGameIsOver() throws Exception {
+    BowlingScenario bowlingScenario = new BowlingScenario();
+    bowlingScenario.givenABowlingArea()
+        .whenIStartAGame("player")
+        .whenIDownPins("player", 10)
+        .whenIDownPins("player", 10)
+        .whenIDownPins("player", 10)
+        .whenIDownPins("player", 10)
+        .whenIDownPins("player", 10)
+        .whenIDownPins("player", 10)
+        .whenIDownPins("player", 10)
+        .whenIDownPins("player", 10)
+        .whenIDownPins("player", 10)
+        .whenIDownPins("player", 1)
+        .whenIDownPins("player", 2)
+        .thenTheGameIsOver("player")
+        .thenTheOutputLineShouldBe("player", "X X X X X X X X X 12")
+        .thenTheScoreShouldBe("player", 247);
   }
 }
