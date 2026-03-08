@@ -50,7 +50,7 @@ public class BowlingApplicationController implements DefaultApi {
   @Override
   public Mono<@Valid ResultBean> play(@Body @NotNull @Valid PlayerBean playerBean) {
     int remainingPins = bowlingGame.getRemainingPins(playerBean.getName());
-    int pinsDowns = new Random().nextInt(remainingPins) + 1;
+    int pinsDowns = new Random().nextInt(remainingPins + 1);
     bowlingGame.pinsDown(playerBean.getName(), pinsDowns);
     return Mono.delay(Duration.ofSeconds(3)).then(Mono.just(new ResultBean(BigDecimal.valueOf(pinsDowns))));
   }
