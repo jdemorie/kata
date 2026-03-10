@@ -29,7 +29,7 @@ const StartPage: FC = () => {
         if (inputRef.current) {
             inputRef.current.focus();
         }
-    });
+    }, []);
 
     return (
         <Container initial={{scale: 0}} animate={{
