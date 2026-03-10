@@ -1,14 +1,10 @@
 // jest.config.ts
 
-module.exports = {
+export default {
     preset: "ts-jest",
     testEnvironment: "jsdom",
     transform: {
         "\\.[t]sx?$": ['ts-jest'],
     },
     setupFilesAfterEnv: ["<rootDir>/src/setupTests.ts"],
-};
-
-export default {
-    exports
 }

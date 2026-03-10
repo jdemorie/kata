@@ -51,7 +51,7 @@ describe("GamePage Component", () => {
         const button = screen.getByText("Throw Ball");
         expect(button).toBeInTheDocument();
         button.click();
-        const launchingElement = await screen.findByTestId("launching-gif");
+        const launchingElement = await screen.findByText("Launching ball...");
         expect(launchingElement).toBeInTheDocument();
     });
 });
