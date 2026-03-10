@@ -11,10 +11,6 @@ const StartPage: FC = () => {
     const inputRef = useRef<HTMLInputElement>(null);
     const {startGame, isStartSuccess} = useStartGame();
 
-    const navigateStartGame = useCallback(() => {
-        navigate("/game");
-    }, [navigate]);
-
     const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setName(e.target.value);
     };
@@ -25,18 +21,15 @@ const StartPage: FC = () => {
         }
     };
 
-    function onStartGame() {
-        startGame(name);
-    }
+    const onStartGame = useCallback(() => {
+        navigate("/game");
+    }, [navigate, isStartSuccess]);
 
     useEffect(() => {
         if (inputRef.current) {
             inputRef.current.focus();
         }
-        if (isStartSuccess) {
-            navigateStartGame();
-        }
-    }, [isStartSuccess]);
+    });
 
     return (
         <Container initial={{scale: 0}} animate={{
